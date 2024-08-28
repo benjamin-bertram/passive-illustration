@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passive Illustration</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Animation -->
+    <div id="threejs-container">
+    <script src="scripts/cover-animation.js"></script>
+    </div>
+
+    <!-- Additional content to enable scrolling -->
+    <div class="main-content">
+
+        <!-- Table of Contents -->
+
+        <div id="table-of-contents">
+            <div id="headline1" class="headline" data-words="TABLE,OF,CONTENTS"></div>
+                <nav>
+                    <ul>
+                        <li><a href="#history-of-genai">History of Generative AI</a></li>
+                        <li><a href="#how-genai-works">How Generative AI Works</a></li>
+                        <li><a href="#token-library">Token Library</a></li>
+                        <li><a href="#how-diffusion-works">How Generative AI Works</a></li>
+                        <li><a href="#latent-experiments">Latent Experiments</a></li>
+                        <li><a href="#frequently-asked-questions">Frequently Asked Questions</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+        <!-- History -->
+
+        <div id="history-of-genai">
+            <div id="headline2" class="headline" data-words="HISTORY,OF,GENERATIVE AI"></div>
+            <div class="flex-container">
+                <div id="image-container" class="column-1">
+                    <div id="timeline-animation" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2)"></div>
+                </div>
+                <div id="text-container" class="column-2">
+                    <div class="row-1-timeline"> 
+                        <h1 id="chapter-title">Chapter Title</h1>
+                        <div id="chapter-text" class="readable-text">This is the text for the current chapter.</div>
+                    </div>
+                    <div class="row-2">
+                        <div id="timeline">
+                            <div id="left-arrow">&#9664;</div>
+                            <svg id="timeline-svg" class="timeline-svg"></svg>
+                            <!-- JavaScript will dynamically create and insert the timeline markers here -->
+                            <div id="right-arrow">&#9654;</div> 
+                        </div>  
+                    </div>
+                </div>
+            </div> 
+            <a href="#table-of-contents">Back to the table of contents</a>       
+        </div>
+
+        <!-- How genAI (Image) works  -->
+
+        <div id="how-genai-works">
+            <div id="headline3" class="headline" data-words="HOW, GENERATIVE AI, WORKS"></div>
+            <div class="flex-container">
+                <div id="text-container" class="column-1">
+                    <div id="how-genai-works-chapter" class="page-index">
+                        <!-- Buttons will be dynamically added here -->
+                    </div>
+                    <div id="how-genai-works-text" class="row-1">
+                        <h1 id="how-genai-works-chapter-title">Chapter Title</h1>
+                        <div id="how-genai-works-chapter-text" class="readable-text">This is the text for the current chapter.</div>
+                    </div>
+                </div>
+                <div id="image-container" class="column-2">
+                    <div id="how-genai-works-animation"></div>
+                </div>
+            </div> 
+        </div>
+
+        <!-- Token Library -->
+
+        <div id="token-library">
+            <div id="headline3" class="headline" data-words="TOKEN,LIBRARY"></div>
+            <div class="flex-container">
+                <div id="text-container" class="column-1">
+                    <div class="row-1"> 
+                        <div id="chapter-text" class="readable-text">
+
+                            <p>A token library is an innovative tool designed to search and display tokens from CLIP (Contrastive Language-Image Pre-training) for image generators. CLIP, developed by OpenAI, is a neural network trained on a vast dataset of image-text pairs. It has demonstrated remarkable abilities in understanding the relationship between textual descriptions and visual content.</p>
+                            <p>The token library acts as an intermediary, allowing users to efficiently harness the power of CLIP within their image generation workflows. By providing a searchable interface for CLIP's extensive vocabulary, it enables creators to find the most appropriate and effective tokens for their desired visual outputs.</p>
+                            <h2>The Mechanics of Token Libraries</h2>
+                            <p>At its core, a token library operates on a simple yet powerful principle:</p>
+                            <ol>
+                            <li><b>Input</b>: Users enter a textual description or concept.</li>
+                            <li><b>Token Extraction</b>: The library processes this input through CLIP's tokenizer.</li>
+                            <li><b>Semantic Search</b>: It then performs a semantic search across its database of pre-computed token embeddings.</li>
+                            <li><b>Result Display</b>: The most relevant tokens are presented to the user, often accompanied by sample images or usage statistics.</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="row-2-timeline">
+                        <div id="searchfield">
+                            <input type="text" id="searchInput" placeholder="Search by token...">
+                            <h1 style="text-align: center;">or concept:</h1>
+                            <div class="page-index">
+                                <button id="unusualButton" class="page-number">Unusual Tokens</button>
+                                <button id="namesButton" class="page-number">Names</button>
+                                <button id="colorsButton" class="page-number">Colors</button>
+                                <button id="materialsButton" class="page-number">Materials</button>
+                                <button id="countriesButton" class="page-number">Countries</button>
+                                <button id="occupationsButton" class="page-number">Occupations</button>
+                            </div>
+                        </div>  
+                    </div>
+                </div>
+                <div id="searchresult-container" class="column-2">
+                    <div id="searchResults"></div>
+                    <div id="resultCount" style="text-align: center; padding-top: 20px"></div>
+                    <div id="page-index" class="page-index"></div>
+                </div>
+            </div> 
+        </div>
+
+        <!-- Settings of diffusion networks -->
+
+        <div id="how-diffusion-works">
+            <div id="headline3" class="headline" data-words="HOW, DIFFUSION, WORKS"></div>
+            <div class="flex-container">
+                <div id="image-container" class="column-1">
+                    <div id="settings-animation"></div>
+                </div>
+                <div id="text-container" class="column-2">
+                    <div id="how-genai-works-text" class="row-1">
+                        <h1 id="how-genai-works-chapter-title">Chapter Title</h1>
+                        <div id="how-genai-works-chapter-text" class="readable-text">This is the text for the current chapter.</div>
+                    </div>
+                    <div id="settings" class="page-index">
+                        <!-- Buttons will be dynamically added here -->
+                    </div>
+                </div>
+            </div> 
+        </div>
+
+        <!-- Experiments -->
+
+        <div id="latent-experiments">
+            <div id="headline3" class="headline" data-words="LATENT,EXPERIMENTS"></div>
+            
+            <div class="flex-container">
+                <div id="experiment-image-container" class="column-1">
+                    <div id="experiment-image">
+                        <img src="" alt="Image by Benjamin Bertram generated with AI" width="600" height="800">
+                    </div>
+                    <div id="navigation-buttons">
+                        <button id="prev-button">Previous Variation</button>
+                        <button id="next-button">Next Variation</button>
+                    </div>
+                </div>
+                <div id="experiment-content" class="column-2">
+                    <div class="row-1"> 
+                        <h1 id="experiment-title">Experiment Title</h1>
+                        <div id="experiment-text" class="readable-text">This is the text for the current experiment.</div>
+                    </div>
+                    <div class="row-2"> 
+                        <div id="mockups" class="container">
+                            <div class="box" id="book-container"></div>
+                            <div class="box" id="vinyl-container"></div>
+                            <div class="box" id="canvas-container"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- TBD -->
+        
+        <div id="frequently-asked-questions">
+            <div id="headline3" class="headline" data-words="FREQUENTLY,ASKED,QUESTIONS"></div>
+            <img src="public/image5.png" alt="Description of the image" width="600" height="400">
+        </div>
+        <div id="text-container">
+            <h1>Scroll Below</h1>
+            <p>Once upon a time...</p>
+        </div>
+
+        <div id="text-container">
+            <h1>More Content</h1>
+            guys to thank: <br>
+            u/lostinspaz, antoni romanov, peter kabel, david mair, julian heinken, u/emadmostaque, andreas blattmann, robin, rombach, markus rockstroh, ella amara, nora weigler, sarah pfeiffer, michaela diener, safa beluchi, eyal avri, israel, hamburg, palestina, u/marshallbrain
+
+            <p>Adding more content to make sure the page scrolls properly.</p>
+        </div>
+    </div>
+
+
+    <!-- necessary scripts -->
+    <script src="scripts/lerping-headline.js"></script>
+
+    <script src="scripts/timeline-animation.js"></script>
+    <script src="scripts/timeline.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelectorAll('.timeline-year').forEach(function(element) {
+                let yearText = element.innerText;
+                let integerYear = yearText.split('.')[0]; // Remove the decimal part
+                element.innerText = integerYear; // Update the element's text
+            });
+        });
+    </script>
+
+    <script src="scripts/howgenaiworks-animation.js"></script>
+    <script src="scripts/howgenaiworks.js"></script>
+
+    <script src="scripts/search.js"></script>
+
+    <script src="scripts/experiment-dataloader.js"></script>
+    <script>
+        function loadScript(url, containerId) {
+            const script = document.createElement('script');
+            script.src = url;
+            script.onload = () => console.log(`${url} loaded successfully`);
+            document.getElementById(containerId).appendChild(script);
+        }
+    
+        loadScript('scripts/book.js', 'book-container');
+        loadScript('scripts/canvas.js', 'canvas-container');
+        loadScript('scripts/vinyl.js', 'vinyl-container');
+    </script> 
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+        
+                const target = document.querySelector(this.getAttribute('href'));
+                
+                window.scrollTo({
+                    top: target.offsetTop,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
+
+</body>
+</html>
