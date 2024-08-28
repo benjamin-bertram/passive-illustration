@@ -1,0 +1,262 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: none;
+}
+
+img {
+    border-radius: 5px; /* Adjust this value for more or less rounded edges */
+}
+
+.main-content {
+    padding-left: 50px;
+    padding-right: 50px;
+    overflow: visible;
+
+}
+
+.flex-container {
+    display: flex;
+    overflow: visible;
+    justify-content: space-between;
+}
+
+.headline {
+    padding-top: 40px;
+    padding-bottom: 20px;
+    background-color: none;
+}
+
+.readable-text {
+    text-align: left;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+    column-count: 2; /* Add this to create two columns */
+    column-fill: balance; /* Ensures the text is balanced across columns */
+    column-gap: 20px; /* Adjust the gap between columns */
+}
+
+h1 {
+    text-align: left;
+    font-size: 30px;
+    line-height: 1.5;
+    color: #333;
+    font-weight: 500;
+    letter-spacing: 0.1cap;
+    padding-bottom: 16px;
+}
+
+.column-1, .column-2 {
+    background-color: none;
+    width: 100%; /* Full width of the column */
+    overflow: visible;
+}
+
+#mockups.container {
+    display: flex;
+    width: 100%; /* Full width of the column */
+    align-items: center; /* Center items vertically if needed */
+}
+
+.box {
+    flex: 1;
+    text-align: center;
+    cursor: pointer;
+    margin: 0px; /* Add some spacing between boxes */
+}
+
+button {
+    background-color: #f0f0f0; /* Light background color */
+    border: none; /* Border to match the page buttons */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 15px; /* Padding for button size */
+    margin: 5px; /* Space between buttons */
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s, border-color 0.3s; /* Smooth transitions */
+}
+
+/* timeline formats */
+
+#timeline {
+    position: relative;
+    height: 500px;
+    width: 90%;
+    margin-top: -120px;
+}
+
+#timeline-animation {
+    position: absolute;
+}
+
+.timeline-marker {
+    width: 11px;
+    height: 11px;
+    background-color: black;
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    transform: translate(-40%, -50%);
+    transition: background-color 0.3s, width 0.3s, height 0.3s; /* Smooth transition */
+}
+.timeline-marker.active {
+    background-color: red; /* Change color for the active dot */
+    width: 15px; /* Increase size for emphasis */
+    height: 15px; /* Increase size for emphasis */
+}
+.timeline-year {
+    position: absolute;
+    transform: translate(-100%, -130%) rotate(14deg);
+    font-size: 12px;
+    color: black;
+}
+.timeline-svg {
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: visible; /* Ensure overflow is visible if SVG size exceeds its container */
+}
+
+#left-arrow, #right-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 1em;
+    user-select: none;
+}
+#left-arrow {
+    left: -49px;
+}
+#right-arrow {
+    right: -29px;
+}
+
+/* search formats */
+
+#searchInput {
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    font-size: 30px;
+    line-height: 1.5;
+    color: #333;
+    font-weight: 500;
+    letter-spacing: 0.1cap;
+    max-width: 600px; /* Limit maximum width for readability */
+    margin: 20px auto;
+    padding: 30px 30px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    display: block; /* Center the input */
+}
+
+#searchInput:focus {
+    border-color: #d55b5b; /* Change border color on focus */
+}
+
+#searchResults {
+    display: grid;
+    padding-inline: 130px;
+    grid-template-columns: repeat(auto-fill, minmax(20%, 1fr)); /* Adjust minmax to better fit images */
+    gap: 10px; /* Increase space between images */
+}
+
+.image-item {
+    position: relative; /* Base position relative for layout flow */
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.image-item:hover {
+    transform: scale(1.1) rotate(2deg); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease-in-out; /* Smooth transform effect */
+    z-index: 10; /* Bring the hovered image to the front */
+}
+
+.image-item:active {
+    transform: scale(2.7) rotate(0deg); /* Slightly enlarge the image on hover */
+    z-index: 16; /* Bring the hovered image to the front */
+}
+
+.image-item img {
+    width: 100%; /* Adjust to make the image take full width of its container */
+    height: 100%; /* Maintain aspect ratio */
+    border-radius: 8px;
+}
+
+.image-item p {
+    position: absolute; /* Position text over the image */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    padding: 5px 10px;
+    color: #fff;
+    font-size: 14px;
+    text-align: justify;
+}
+
+.page-index {
+    text-align: center;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.page-number {
+    padding: 5px 10px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.page-number.active {
+    background-color: #007bff;
+    color: white;
+}
+
+.page-number:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+/* experiment formats */
+
+#experiment-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Optional: Set a fixed height for the whole content container */
+}
+
+.row-1 {
+    height: 400px; /* Set a fixed height for row-1 */
+    overflow-y: auto; /* Allow scrolling if content overflows */
+    background-color: #ffffff;
+}
+.row-1-timeline {
+    width: 80%;
+    height: 400px; /* Set a fixed height for row-1 */
+    overflow-y: visible; /* Allow scrolling if content overflows */
+    background-color: #ffffff;
+}
+
+.row-2 {
+    height: 300px; /* Set a fixed height for row-2 */
+    display: flex;
+    background-color: #ffffff;
+    justify-content: space-around; /* Ensure equal spacing between boxes */
+}
