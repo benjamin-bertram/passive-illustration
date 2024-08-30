@@ -131,9 +131,9 @@ document.addEventListener("DOMContentLoaded", function() {
     fetchAndProcessData('/benjaminbertram_com/filenames2.txt', true);
 
     // Add event listeners to filter buttons
-    document.querySelectorAll('.filter-button').forEach(button => {
-        button.addEventListener('click', () => {
-            fetchAndProcessData(button.dataset.file);
+    document.querySelectorAll('.page-number').forEach(span => {
+        span.addEventListener('click', () => {
+            fetchAndProcessData(span.dataset.file);
             isFilterActive = true; // Mark the filter as active
         });
     });
