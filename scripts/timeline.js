@@ -81,9 +81,10 @@ fetch('public/timeline.json')
             document.getElementById("chapter-title").innerText = chapter.title;
             document.getElementById("chapter-text").innerHTML = chapter.text;
         
-            // Update the image in the p5 sketch
-            if (window.p5InstanceTimeline) {
-                window.p5InstanceTimeline.updateImage(chapter.image); // Update the image based on the selected chapter
+            // Update the image source directly
+            const imgElement = document.getElementById('timeline-animation');
+            if (imgElement) {
+                imgElement.src = chapter.image; // Update the image source
             }
         
             highlightActiveDot(index); // Highlight the active dot

@@ -1,7 +1,7 @@
 [
     {
         "title": "OVERVIEW",
-        "text": "The 1990s saw the rise of digital media and generative art. Artists began using algorithms to create digital artwork, with fractal algorithms generating complex, self-similar patterns.",
+        "text": "The 1990s saw the rise of digital media and generative art. Artists began using algorithms to create digital artwork, with fractal algorithms generating complex, self-similar patterns.<br>",
         "image": "public/timeline/generative_art.jpg"
     },
     {
@@ -32,6 +32,6 @@
     {
         "title": "LATENT SPACE",
         "text": "The 1990s saw the rise of digital media and generative art. Artists began using algorithms to create digital artwork, with fractal algorithms generating complex, self-similar patterns.",
-        "image": "public/timeline/Logo_of_YouTube_(2005-2006).svg.png"
+        "image": ""
     }
 ]

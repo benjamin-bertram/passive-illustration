@@ -1,39 +1,39 @@
 [
     {
-        "title": "Steps",
+        "title": "Prompt Engeneering",
         "text": "<p>The 1950s marked the beginning of computer graphics as a field. <i>John Whitney</i>, a pioneer in computer graphics, created abstract films using analog computers. In 1958, the film 'Vertigo', directed by <i>Alfred Hitchcock</i>, showcased one of the earliest uses of computer graphics in film, employing a hypnotic spiral effect to represent the protagonist's fear of heights.</p><p>&nbsp;</p><p>This effect was created by <i>Saul Bass</i>, a graphic designer and filmmaker known for his distinctive style in title sequences and posters. The spiral effect was achieved using a mechanical analog computer known as the <strong>optical printer.</strong> This device allowed for the combination of multiple film elements into a single piece of film, using various photographic techniques like matte shots, fades, and color changes. For 'Vertigo,' Bass used a series of mathematically generated spirals and overlaid them on footage of an eye, creating the iconic and disorienting opening sequence. The spirals themselves were produced using a combination of physical mechanisms and photographic tricks, with a rotating spiral pattern filmed against a neutral background.</p><p>&nbsp;</p><p>These early experiments laid the foundation for modern computer graphics by demonstrating the potential for technology to create entirely new visual experiences that were impossible with traditional methods alone.</p>",
         "video": "public/settings/test.mp4",
         "slidervalue": [1,2,3,4,5]
 
     },
     {
-        "title": "seed",
+        "title": "Imgage to image",
         "text": "Ivan Sutherland developed Sketchpad in the 1960s, the first graphical user interface and precursor to modern CAD systems. This innovation laid the foundation for interactive computer graphics.",
         "video": "public/settings/test2.mp4",
         "slidervalue": [1333,22344,3211,4222,5333]
 
     },
     {
-        "title": "cfg",
+        "title": "Inpaiting",
         "text": "Ed Catmull, a co-founder of Pixar, developed foundational techniques in 3D graphics, including texture mapping and Z-buffering, allowing for more realistic rendering of 3D objects.",
         "video": "public/settings/test.mp4",
         "slidervalue": [1,2,3,4,5]
 
     },
     {
-        "title": "weight",
+        "title": "ControlNet",
         "text": "Neural networks gained attention in the 1980s, with the rediscovery of backpropagation, essential for training neural networks. Graphics techniques like ray tracing, introduced by Turner Whitted, enabled photorealistic rendering.",
         "video": "public/settings/test.mp4",
         "slidervalue": [1,2,3,4,5]
     },
     {
-        "title": "sampler",
+        "title": "Finetuning",
         "text": "The 1990s saw the rise of digital media and generative art. Artists began using algorithms to create digital artwork, with fractal algorithms generating complex, self-similar patterns.",
         "video": "public/settings/test.mp4",
         "slidervalue": ["Euler","Euler A","DDIM","PLMS","LCM"]
     },
     {
-        "title": "denoising strength",
+        "title": "Granular Control",
         "text": "The 1990s saw the rise of digital media and generative art. Artists began using algorithms to create digital artwork, with fractal algorithms generating complex, self-similar patterns.",
         "video": "public/settings/test.mp4",
         "slidervalue": [0.1,0.3,0.5,0.7,0.9]

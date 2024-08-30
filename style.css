@@ -1,103 +1,238 @@
-* {
-    box-sizing: border-box;
+html, body {
     margin: 0;
     padding: 0;
+    font-family: 'Poppins', sans-serif;
 }
 
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: none;
-}
+/* Loading Overlay*/
+
+#loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+  }
+  
+  .spinner {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #3498db;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* Hidden state */
+  .hidden {
+    opacity: 0;
+    visibility: hidden;
+  }  
+
+/* Rest of Website*/
 
 img {
-    border-radius: 5px; /* Adjust this value for more or less rounded edges */
+    border-radius: 5px;
 }
 
 .main-content {
-    padding-left: 50px;
-    padding-right: 50px;
-    overflow: visible;
-
+    padding-left: 100px;
+    padding-right: 100px;
 }
 
-.flex-container {
-    display: flex;
-    overflow: visible;
-    justify-content: space-between;
+.chapter-container {
+    height: 100vh; /* Full viewport height */
 }
 
 .headline {
-    padding-top: 40px;
-    padding-bottom: 20px;
-    background-color: none;
+    padding-top: 20px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns of equal width */
+    gap: 20px; /* Gap between grid items */
+    overflow: visible;
+}
+
+/* Ensure equal width for columns */
+.column {
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column; /* Stack content vertically within each column */
+}
+
+.row-1, .row-2 {
+    width: 100%; /* Full width within the column */
+    align-items: flex-start;
+
+}
+
+.row-1 {
+    flex-direction: row; /* Stack items vertically within the row */
+}
+
+.row-2 {
+    position: relative;
+    flex-direction: column;
+    width: 100%; /* Adjust as necessary */
+    height: 100%; /* Ensure it takes up the full height of its parent */
+    display: flex; /* Flexbox to manage its children if needed */
+    align-items: center;
+    justify-content: space-between; /* Ensure content stretches to the sides */
+  }
+
+
+/* Experiment exception */
+
+.row-2-experiment {
+    position: relative;
+    flex-direction: row;
+    width: 100%; /* Adjust as necessary */
+    height: 100%; /* Ensure it takes up the full height of its parent */
+    display: flex; /* Flexbox to manage its children if needed */
+    align-items: center;
+    justify-content: space-between; /* Ensure content stretches to the sides */
+  }
+
+/* Additional styling for text content */
+
+h1, .readable-text {
+    width: 100%; /* Full width to ensure it takes up the entire row width */
+    margin: 0; /* Remove default margin */
 }
 
 .readable-text {
     text-align: left;
-    font-size: 16px;
+    font-size: 1vw;
     line-height: 1.5;
     color: #333;
-    column-count: 2; /* Add this to create two columns */
-    column-fill: balance; /* Ensures the text is balanced across columns */
-    column-gap: 20px; /* Adjust the gap between columns */
+    column-count: 2;
+    column-fill: balance; /* Allow the content to fill columns naturally */
+    column-gap: 40px;
+    position: relative; /* Relative positioning to use pseudo-element */
 }
 
 h1 {
     text-align: left;
-    font-size: 30px;
+    font-size: 2vw;
     line-height: 1.5;
     color: #333;
     font-weight: 500;
-    letter-spacing: 0.1cap;
+    letter-spacing: 0.1em;
     padding-bottom: 16px;
 }
 
-.column-1, .column-2 {
-    background-color: none;
-    width: 100%; /* Full width of the column */
-    overflow: visible;
+
+/* Styles for rows within columns to ensure they take full width */
+
+#slider {
+    padding: 20px;
+    align-items: center;
+    gap: 10px;
 }
 
-#mockups.container {
-    display: flex;
-    width: 100%; /* Full width of the column */
-    align-items: center; /* Center items vertically if needed */
-}
-
-.box {
-    flex: 1;
-    text-align: center;
+/*********** Baseline, reset styles ***********/
+.hdw-slider, .controlability-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent; /* Transparent background for custom styling */
     cursor: pointer;
-    margin: 0px; /* Add some spacing between boxes */
-}
-
-button {
-    background-color: #f0f0f0; /* Light background color */
-    border: none; /* Border to match the page buttons */
-    border-radius: 5px; /* Rounded corners */
-    padding: 10px 15px; /* Padding for button size */
-    margin: 5px; /* Space between buttons */
-    font-family: 'Poppins', sans-serif;
-    font-size: 16px;
-    line-height: 1.5;
-    color: #333;
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s, border-color 0.3s; /* Smooth transitions */
-}
+    width: 25rem; /* Width similar to the baseline style */
+  }
+  
+  /* Removes default focus */
+  .hdw-slider:focus, .controlability-slider:focus {
+    outline: none;
+  }
+  
+  /******** Chrome, Safari, Opera, and Edge Chromium styles ********/
+  /* slider track */
+  .hdw-slider::-webkit-slider-runnable-track, .controlability-slider::-webkit-slider-runnable-track {
+    background-color: #ddd; /* Light grey track */
+    border-radius: 5px; /* Rounded corners for track */
+    height: 1rem; /* Track height */
+  }
+  
+  /* slider thumb */
+  .hdw-slider::-webkit-slider-thumb, .controlability-slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    margin-top: 0px; /* Centers thumb on the track */
+    background-color: #808080; /* Grey thumb color */
+    border-radius: 4px; /* Rounded corners for thumb */
+    height: 1rem; /* Thumb height */
+    width: 1rem; /* Thumb width */
+  }
+  
+  .hdw-slider:focus::-webkit-slider-thumb, .controlability-slider:focus::-webkit-slider-thumb {
+    background-color: #ff0000; /* Outline color when focused */
+  }
+  
+  /*********** Firefox styles ***********/
+  /* slider track */
+  .hdw-slider::-moz-range-track, .controlability-slider::-moz-range-track {
+    background-color: #d0d0d0; /* Light grey track */
+    border-radius: 5px; /* Rounded corners for track */
+    height: 1rem; /* Track height */
+  }
+  
+  /* slider thumb */
+  .hdw-slider::-moz-range-thumb, .controlability-slider::-moz-range-thumb {
+    background-color: #808080; /* Grey thumb color */
+    border: none; /* Removes extra border that Firefox applies */
+    border-radius: 4px; /* Rounded corners for thumb */
+    height: 1rem; /* Thumb height */
+    width: 1rem; /* Thumb width */
+  }
+  
+  .hdw-slider:focus::-moz-range-thumb, .controlability-slider:focus::-moz-range-thumb {
+    outline: 3px solid #808080; /* Outline color when focused */
+    outline-offset: 0.125rem; /* Offset for the outline */
+  }
+  
 
 /* timeline formats */
 
 #timeline {
-    position: relative;
-    height: 500px;
-    width: 90%;
-    margin-top: -120px;
+    position: absolute; /* Fixed positioning within the relative parent container */
+    bottom: 0; /* Align to the bottom of the parent container */
+    left: 0; /* Align to the left */
+    right: 0; /* Stretch to the right */
+    height: 300px; /* Adjust height as needed */
+    width: 100%; /* Full width of the container */
+    background-color: #ffffff; /* Optional: Background color for visibility */
+    display: flex; /* Flexbox for alignment if needed */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    z-index: 10; /* Ensure it sits above other elements if necessary */
 }
 
-#timeline-animation {
-    position: absolute;
+/* Ensure the SVG is properly positioned and layered */
+.timeline-svg {
+    position: absolute; /* Overlay within the parent */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Ensures SVG does not block interactions */
+    overflow: visible;    
 }
 
+/* Adjust markers to be on a different layer if necessary */
 .timeline-marker {
     width: 11px;
     height: 11px;
@@ -106,24 +241,28 @@ button {
     cursor: pointer;
     position: absolute;
     transform: translate(-40%, -50%);
-    transition: background-color 0.3s, width 0.3s, height 0.3s; /* Smooth transition */
+    transition: background-color 0.3s, width 0.3s, height 0.3s;
 }
+
+/* For active markers, if they need to be above everything */
 .timeline-marker.active {
-    background-color: red; /* Change color for the active dot */
-    width: 15px; /* Increase size for emphasis */
-    height: 15px; /* Increase size for emphasis */
+    background-color: red;
+    width: 15px;
+    height: 15px;
 }
+
+/* Ensure years are correctly positioned relative to markers */
 .timeline-year {
     position: absolute;
     transform: translate(-100%, -130%) rotate(14deg);
     font-size: 12px;
     color: black;
 }
+
 .timeline-svg {
     width: 100%;
     height: 100%;
     pointer-events: none;
-    overflow: visible; /* Ensure overflow is visible if SVG size exceeds its container */
 }
 
 #left-arrow, #right-arrow {
@@ -134,11 +273,19 @@ button {
     font-size: 1em;
     user-select: none;
 }
+
 #left-arrow {
     left: -49px;
 }
+
 #right-arrow {
     right: -29px;
+}
+
+.row-1-timeline {
+    width: 80%;
+    height: 400px;
+    background-color: #ffffff;
 }
 
 /* search formats */
@@ -151,52 +298,53 @@ button {
     line-height: 1.5;
     color: #333;
     font-weight: 500;
-    letter-spacing: 0.1cap;
-    max-width: 600px; /* Limit maximum width for readability */
+    letter-spacing: 0.1em;
+    max-width: 600px;
     margin: 20px auto;
-    padding: 30px 30px;
+    padding: 10px;
     border: 2px solid #ddd;
     border-radius: 8px;
-    display: block; /* Center the input */
+    display: block;
 }
 
 #searchInput:focus {
-    border-color: #d55b5b; /* Change border color on focus */
+    border-color: #d55b5b;
 }
 
 #searchResults {
     display: grid;
     padding-inline: 130px;
-    grid-template-columns: repeat(auto-fill, minmax(20%, 1fr)); /* Adjust minmax to better fit images */
-    gap: 10px; /* Increase space between images */
+    grid-template-columns: repeat(4, 8dvw);
+    grid-template-rows: repeat(4, 8dvw);
+    gap: 10px;
 }
 
 .image-item {
-    position: relative; /* Base position relative for layout flow */
+    position: relative;
     cursor: pointer;
     border-radius: 8px;
 }
 
 .image-item:hover {
-    transform: scale(1.1) rotate(2deg); 
+    transform: scale(1.1) rotate(2deg);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s ease-in-out; /* Smooth transform effect */
-    z-index: 10; /* Bring the hovered image to the front */
+    transition: transform 0.2s ease-in-out;
+    z-index: 10;
 }
 
 .image-item:active {
-    transform: scale(2.7) rotate(0deg); /* Slightly enlarge the image on hover */
-    z-index: 16; /* Bring the hovered image to the front */
+    transform: scale(2.7);
+    z-index: 16;
 }
 
 .image-item img {
-    width: 100%; /* Adjust to make the image take full width of its container */
-    height: 100%; /* Maintain aspect ratio */
+    width: 100%;
+    height: 100%;
     border-radius: 8px;
 }
 
 .image-item p {
-    position: absolute; /* Position text over the image */
+    position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -209,7 +357,6 @@ button {
 
 .page-index {
     text-align: center;
-    margin-top: 10px;
     display: flex;
     justify-content: center;
     gap: 10px;
@@ -224,39 +371,39 @@ button {
     transition: background-color 0.2s;
 }
 
-.page-number.active {
-    background-color: #007bff;
+.page-number.active, .page-number:hover {
+    background-color: #ff0000;
     color: white;
 }
 
-.page-number:hover {
-    background-color: #007bff;
-    color: white;
-}
+/* Animated Images Container */
 
-/* experiment formats */
-
-#experiment-content {
-    display: flex;
-    flex-direction: column;
-    height: 100%; /* Optional: Set a fixed height for the whole content container */
+.animated-image-container {
+    perspective: 1000px; /* Adds a 3D perspective effect */
+    overflow: visible; /* Keeps overflow visible */
 }
-
-.row-1 {
-    height: 400px; /* Set a fixed height for row-1 */
-    overflow-y: auto; /* Allow scrolling if content overflows */
-    background-color: #ffffff;
+  
+.animated-image {
+    width: 100%; /* Sets width to 40% of the container */
+    animation: subtleMovement 20s ease-in-out infinite; /* Keyframe animation */
+    transform-style: preserve-3d; /* Preserves 3D transformations for child elements */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-.row-1-timeline {
-    width: 80%;
-    height: 400px; /* Set a fixed height for row-1 */
-    overflow-y: visible; /* Allow scrolling if content overflows */
-    background-color: #ffffff;
-}
-
-.row-2 {
-    height: 300px; /* Set a fixed height for row-2 */
-    display: flex;
-    background-color: #ffffff;
-    justify-content: space-around; /* Ensure equal spacing between boxes */
+  
+@keyframes subtleMovement {
+    0% {
+    transform: rotate3d(1, 0, 0, -6deg) rotate3d(0, 1, 0, 6deg);
+    }
+    25% {
+    transform: rotate3d(1, 0, 0, -6deg) rotate3d(0, 1, 0, -6deg);
+    }
+    50% {
+    transform: rotate3d(1, 0, 0, 6deg) rotate3d(0, 1, 0, -6deg);
+    }
+    75% {
+    transform: rotate3d(1, 1, 0, 6deg) rotate3d(1, 1, 0, 6deg);
+    }
+    100% {
+    transform: rotate3d(1, 0, 0, -6deg) rotate3d(0, 1, 0, 6deg);
+    }
 }

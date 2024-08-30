@@ -9,8 +9,8 @@ fetch('/public/experiments.json')
         const imgElement = document.querySelector('#experiment-image img');
         const textElement = document.getElementById('experiment-text');
         const titleElement = document.getElementById('experiment-title');
-        const prevButton = document.getElementById('prev-button');
-        const nextButton = document.getElementById('next-button');
+        const prevButton = document.getElementById('previous');
+        const nextButton = document.getElementById('next');
 
         // Function to update the experiment display
         function updateExperiment(index) {

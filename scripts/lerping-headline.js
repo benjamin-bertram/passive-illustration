@@ -39,7 +39,7 @@ document.querySelectorAll('.headline').forEach((element) => {
                 
                 p.pop();
                 //startX += p.textWidth(word) + 10;
-                startX += p.textWidth(word) + 10 + letterSpacing * word.length; // Adjust the spacing between words
+                startX += p.textWidth(word) + letterSpacing * word.length; // Adjust the spacing between words
 
             });
         };

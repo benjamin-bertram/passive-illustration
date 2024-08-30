@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="loading-overlay">
+        <div class="spinner"></div>
+    </div>
 
     <!-- Animation -->
     <div id="threejs-container">
@@ -23,30 +26,34 @@
 
         <!-- Table of Contents -->
 
-        <div id="table-of-contents">
-            <div id="headline1" class="headline" data-words="TABLE,OF,CONTENTS"></div>
-                <nav>
-                    <ul>
-                        <li><a href="#history-of-genai">History of Generative AI</a></li>
-                        <li><a href="#how-genai-works">How Generative AI Works</a></li>
-                        <li><a href="#token-library">Token Library</a></li>
-                        <li><a href="#how-diffusion-works">How Generative AI Works</a></li>
-                        <li><a href="#latent-experiments">Latent Experiments</a></li>
-                        <li><a href="#frequently-asked-questions">Frequently Asked Questions</a></li>
-                    </ul>
-                </nav>
-            </div>
-
+        <div id="table-of-contents" class="chapter-container">
+            <div id="headline1" class="headline" data-words="TABLE, OF, CONTENTS"></div>
+            <nav>
+                <ul>
+                    <li><a href="#history-of-genai">History of Generative AI</a></li>
+                    <li><a href="#how-genai-works">How Generative AI Works</a></li>
+                    <li><a href="#how-diffusion-works">How Generative AI Works</a></li>
+                    <li><a href="#token-library">Token Library</a></li>
+                    <li><a href="#controlability">Control Latent Space</a></li>
+                    <li><a href="#metacreativity">Metacreative Latent Spaces</a></li>
+                    <li><a href="#latent-experiments">Latent Experiments</a></li>
+                    <li><a href="#frequently-asked-questions">Frequently Asked Questions</a></li>
+                </ul>
+            </nav>
+        </div>
+        
         <!-- History -->
 
-        <div id="history-of-genai">
-            <div id="headline2" class="headline" data-words="HISTORY,OF,GENERATIVE AI"></div>
-            <div class="flex-container">
-                <div id="image-container" class="column-1">
-                    <div id="timeline-animation" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2)"></div>
+        <div id="history-of-genai" class="chapter-container">
+            <div id="headline2" class="headline" data-words="HISTORY, OF, GENERATIVE AI"></div>
+            <div class="grid-container">
+                <div id="image-container" class="column">
+                    <div class="animated-image-container">
+                        <img id="timeline-animation" src="" alt="Animated Timeline" class="animated-image">
+                    </div>
                 </div>
-                <div id="text-container" class="column-2">
-                    <div class="row-1-timeline"> 
+                <div id="text-container" class="column">
+                    <div class="row-1"> 
                         <h1 id="chapter-title">Chapter Title</h1>
                         <div id="chapter-text" class="readable-text">This is the text for the current chapter.</div>
                     </div>
@@ -65,34 +72,59 @@
 
         <!-- How genAI (Image) works  -->
 
-        <div id="how-genai-works">
+        <div id="how-genai-works" class="chapter-container">
             <div id="headline3" class="headline" data-words="HOW, GENERATIVE AI, WORKS"></div>
-            <div class="flex-container">
-                <div id="text-container" class="column-1">
-                    <div id="how-genai-works-chapter" class="page-index">
-                        <!-- Buttons will be dynamically added here -->
-                    </div>
+            <div class="grid-container">
+                <div id="text-container" class="column">
                     <div id="how-genai-works-text" class="row-1">
-                        <h1 id="how-genai-works-chapter-title">Chapter Title</h1>
-                        <div id="how-genai-works-chapter-text" class="readable-text">This is the text for the current chapter.</div>
+                        <div id="how-genai-works-chapter" class="page-index"></div>
+                    </div>
+                    <h1 id="how-genai-works-chapter-title">Chapter Title</h1>
+                    <div id="how-genai-works-chapter-text" class="readable-text">This is the text for the current chapter.</div>
+                </div>
+                <div id="image-container" class="column">
+                    <img id="how-genai-works-animation" src="" alt="Animated Image" class="animated-image">
+                    <div id="genai-image-container" style="cursor: crosshair;">
+                        <script src="scripts/latentspace-animation.js"></script>
                     </div>
                 </div>
-                <div id="image-container" class="column-2">
-                    <div id="how-genai-works-animation"></div>
+            </div> 
+        </div>
+        
+        <!-- Settings of diffusion networks -->
+
+        <div id="how-diffusion-works" class="chapter-container">
+            <div id="headline3" class="headline" data-words="HOW, DIFFUSION, WORKS"></div>
+            <div class="grid-container">
+                <div id="image-container" class="column">
+                    <video id="how-diffusion-works-animation" width="600" preload="auto" style="display: block;" loading="lazy">
+                        <source src="" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div id="slider">
+                        <input type="range" min="0" max="4" class="hdw-slider">
+                        <span class="hdw-slider-value">Value</span>
+                    </div>                
+                </div>
+                <div id="text-container" class="column">
+                    <div id="how-diffusion-works-chapters" class="page-index"></div>                    
+                    <div id="how-diffusion-works-text" class="row-1">
+                        <h1 id="how-diffusion-works-chapter-title">Chapter Title</h1>
+                        <div id="how-diffusion-works-chapter-text" class="readable-text">This is the text for the current chapter.</div>
+                    </div>
                 </div>
             </div> 
         </div>
 
         <!-- Token Library -->
 
-        <div id="token-library">
-            <div id="headline3" class="headline" data-words="TOKEN,LIBRARY"></div>
-            <div class="flex-container">
-                <div id="text-container" class="column-1">
+        <div id="token-library" class="chapter-container">
+            <div id="headline3" class="headline" data-words="TOKEN, LIBRARY"></div>
+            <div class="grid-container">
+                <div id="text-container" class="column">
                     <div class="row-1"> 
                         <div id="chapter-text" class="readable-text">
-
-                            <p>A token library is an innovative tool designed to search and display tokens from CLIP (Contrastive Language-Image Pre-training) for image generators. CLIP, developed by OpenAI, is a neural network trained on a vast dataset of image-text pairs. It has demonstrated remarkable abilities in understanding the relationship between textual descriptions and visual content.</p>
+                            A token library is an innovative tool designed to search and display tokens from CLIP (Contrastive Language-Image Pre-training) for image generators. CLIP, developed by OpenAI, is a neural network trained on a vast dataset of image-text pairs. It has demonstrated remarkable abilities in understanding the relationship between textual descriptions and visual content.
                             <p>The token library acts as an intermediary, allowing users to efficiently harness the power of CLIP within their image generation workflows. By providing a searchable interface for CLIP's extensive vocabulary, it enables creators to find the most appropriate and effective tokens for their desired visual outputs.</p>
                             <h2>The Mechanics of Token Libraries</h2>
                             <p>At its core, a token library operates on a simple yet powerful principle:</p>
@@ -104,22 +136,22 @@
                             </ol>
                         </div>
                     </div>
-                    <div class="row-2-timeline">
+                    <div class="row-2">
                         <div id="searchfield">
                             <input type="text" id="searchInput" placeholder="Search by token...">
                             <h1 style="text-align: center;">or concept:</h1>
                             <div class="page-index">
-                                <button id="unusualButton" class="page-number">Unusual Tokens</button>
-                                <button id="namesButton" class="page-number">Names</button>
-                                <button id="colorsButton" class="page-number">Colors</button>
-                                <button id="materialsButton" class="page-number">Materials</button>
-                                <button id="countriesButton" class="page-number">Countries</button>
-                                <button id="occupationsButton" class="page-number">Occupations</button>
+                                <span class="page-number" data-file="benjaminbertram_com/countries_filenames.txt" id="countriesButton">Countries</span>
+                                <span class="page-number" data-file="benjaminbertram_com/names_filenames.txt" id="namesButton">Names</span>
+                                <span class="page-number" data-file="benjaminbertram_com/colors_filenames.txt" id="colorsButton">Colors</span>
+                                <span class="page-number" data-file="benjaminbertram_com/occupations_filenames.txt" id="occupationsButton">Occupations</span>
+                                <span class="page-number" data-file="benjaminbertram_com/materials_filenames.txt" id="materialsButton">Materials</span>
+                                <span class="page-number" data-file="benjaminbertram_com/unusual_filenames.txt" id="unusualButton">Unusual</span>                                
                             </div>
                         </div>  
                     </div>
                 </div>
-                <div id="searchresult-container" class="column-2">
+                <div id="searchresult-container" class="column">
                     <div id="searchResults"></div>
                     <div id="resultCount" style="text-align: center; padding-top: 20px"></div>
                     <div id="page-index" class="page-index"></div>
@@ -127,21 +159,62 @@
             </div> 
         </div>
 
-        <!-- Settings of diffusion networks -->
+        <!-- Controlability -->
 
-        <div id="how-diffusion-works">
-            <div id="headline3" class="headline" data-words="HOW, DIFFUSION, WORKS"></div>
-            <div class="flex-container">
-                <div id="image-container" class="column-1">
-                    <div id="settings-animation"></div>
+        <div id="table-of-contents" class="chapter-container">
+            <div id="headline3" class="headline" data-words="CONTROL, LATENT, SPACE"></div>
+            <div class="grid-container">
+                <div id="text-container" class="column">
+                    <video id="controlability-animation" width="600" preload="auto" style="display: block;" loading="lazy">
+                        <source src="" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div id="slider">
+                        <input type="range" min="0" max="4" class="controlability-slider">
+                        <span class="controlability-slider-value">Value</span>
+                    </div>                
                 </div>
-                <div id="text-container" class="column-2">
-                    <div id="how-genai-works-text" class="row-1">
-                        <h1 id="how-genai-works-chapter-title">Chapter Title</h1>
-                        <div id="how-genai-works-chapter-text" class="readable-text">This is the text for the current chapter.</div>
+                <div id="text-container" class="column">
+                    <div id="controlability-chapters" class="page-index"></div>                    
+                    <div id="controlability-text" class="row-1">
+                        <h1 id="controlability-chapter-title">Chapter Title</h1>
+                        <div id="controlability-chapter-text" class="readable-text">This is the text for the current chapter.</div>
                     </div>
-                    <div id="settings" class="page-index">
-                        <!-- Buttons will be dynamically added here -->
+                </div>
+            </div> 
+        </div>
+
+        <!-- Metacreativtiy -->
+
+        <div id="metacreativity" class="chapter-container">
+            <div id="headline1" class="headline" data-words="METACREATIVE, LATENT, SPACES"></div>
+            <div class="grid-container">
+                <div id="text-container" class="column">
+                    <div id="chapter-text" class="readable-text">
+                        A token library is an innovative tool designed to search and display tokens from CLIP (Contrastive Language-Image Pre-training) for image generators. CLIP, developed by OpenAI, is a neural network trained on a vast dataset of image-text pairs. It has demonstrated remarkable abilities in understanding the relationship between textual descriptions and visual content.
+                        <p>The token library acts as an intermediary, allowing users to efficiently harness the power of CLIP within their image generation workflows. By providing a searchable interface for CLIP's extensive vocabulary, it enables creators to find the most appropriate and effective tokens for their desired visual outputs.</p>
+                        <h2>The Mechanics of Token Libraries</h2>
+                        <p>At its core, a token library operates on a simple yet powerful principle:</p>
+                        <ol>
+                        <li><b>Input</b>: Users enter a textual description or concept.</li>
+                        <li><b>Token Extraction</b>: The library processes this input through CLIP's tokenizer.</li>
+                        <li><b>Semantic Search</b>: It then performs a semantic search across its database of pre-computed token embeddings.</li>
+                        <li><b>Result Display</b>: The most relevant tokens are presented to the user, often accompanied by sample images or usage statistics.</li>
+                        </ol>
+                    </div>               
+                </div>
+                <div id="text-container" class="column">
+                    <div id="chapter-text" class="readable-text">
+                        A token library is an innovative tool designed to search and display tokens from CLIP (Contrastive Language-Image Pre-training) for image generators. CLIP, developed by OpenAI, is a neural network trained on a vast dataset of image-text pairs. It has demonstrated remarkable abilities in understanding the relationship between textual descriptions and visual content.
+                        <p>The token library acts as an intermediary, allowing users to efficiently harness the power of CLIP within their image generation workflows. By providing a searchable interface for CLIP's extensive vocabulary, it enables creators to find the most appropriate and effective tokens for their desired visual outputs.</p>
+                        <h2>The Mechanics of Token Libraries</h2>
+                        <p>At its core, a token library operates on a simple yet powerful principle:</p>
+                        <ol>
+                        <li><b>Input</b>: Users enter a textual description or concept.</li>
+                        <li><b>Token Extraction</b>: The library processes this input through CLIP's tokenizer.</li>
+                        <li><b>Semantic Search</b>: It then performs a semantic search across its database of pre-computed token embeddings.</li>
+                        <li><b>Result Display</b>: The most relevant tokens are presented to the user, often accompanied by sample images or usage statistics.</li>
+                        </ol>
                     </div>
                 </div>
             </div> 
@@ -149,30 +222,28 @@
 
         <!-- Experiments -->
 
-        <div id="latent-experiments">
+        <div id="latent-experiments" class="chapter-container">
             <div id="headline3" class="headline" data-words="LATENT,EXPERIMENTS"></div>
             
-            <div class="flex-container">
-                <div id="experiment-image-container" class="column-1">
+            <div class="grid-container">
+                <div id="image-container" class="column">
                     <div id="experiment-image">
-                        <img src="" alt="Image by Benjamin Bertram generated with AI" width="600" height="800">
+                        <img src="" alt="Image by Benjamin Bertram generated with AI" width="300" height="400">
                     </div>
                     <div id="navigation-buttons">
-                        <button id="prev-button">Previous Variation</button>
-                        <button id="next-button">Next Variation</button>
+                        <span id="previous" class="page-number">Previous Variation</span>
+                        <span id="next" class="page-number">Next Variation</span>
                     </div>
                 </div>
-                <div id="experiment-content" class="column-2">
+                <div id="text-container" class="column">
                     <div class="row-1"> 
                         <h1 id="experiment-title">Experiment Title</h1>
                         <div id="experiment-text" class="readable-text">This is the text for the current experiment.</div>
                     </div>
-                    <div class="row-2"> 
-                        <div id="mockups" class="container">
-                            <div class="box" id="book-container"></div>
-                            <div class="box" id="vinyl-container"></div>
-                            <div class="box" id="canvas-container"></div>
-                        </div>
+                    <div class="row-2-experiment">
+                        <div id="book-container" style="margin-right: -20dvw; margin-top: -10dvh;" ></div>
+                        <div id="vinyl-container" style="margin-right: -20dvw; margin-top: -10dvh;"></div>
+                        <div id="canvas-container" style="margin-top: -10dvh;"></div>
                     </div>
                 </div>
             </div>
@@ -180,20 +251,18 @@
         
         <!-- TBD -->
         
-        <div id="frequently-asked-questions">
+        <div id="frequently-asked-questions" class="chapter-container">
             <div id="headline3" class="headline" data-words="FREQUENTLY,ASKED,QUESTIONS"></div>
-            <img src="public/image5.png" alt="Description of the image" width="600" height="400">
         </div>
         <div id="text-container">
             <h1>Scroll Below</h1>
             <p>Once upon a time...</p>
         </div>
-
         <div id="text-container">
             <h1>More Content</h1>
             guys to thank: <br>
             u/lostinspaz, antoni romanov, peter kabel, david mair, julian heinken, u/emadmostaque, andreas blattmann, robin, rombach, markus rockstroh, ella amara, nora weigler, sarah pfeiffer, michaela diener, safa beluchi, eyal avri, israel, hamburg, palestina, u/marshallbrain
-
+rakshit
             <p>Adding more content to make sure the page scrolls properly.</p>
         </div>
     </div>
@@ -202,7 +271,6 @@
     <!-- necessary scripts -->
     <script src="scripts/lerping-headline.js"></script>
 
-    <script src="scripts/timeline-animation.js"></script>
     <script src="scripts/timeline.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -214,11 +282,12 @@
         });
     </script>
 
-    <script src="scripts/howgenaiworks-animation.js"></script>
     <script src="scripts/howgenaiworks.js"></script>
+    <script src="scripts/settings.js"></script>
+    <script src="scripts/controlability.js"></script>
 
     <script src="scripts/search.js"></script>
-
+   
     <script src="scripts/experiment-dataloader.js"></script>
     <script>
         function loadScript(url, containerId) {
@@ -246,7 +315,12 @@
             });
         });
     </script>
-
+    <script>
+        window.addEventListener('load', function() {
+            const loadingOverlay = document.getElementById('loading-overlay');
+            loadingOverlay.classList.add('hidden'); // Adds the 'hidden' class to fade out and hide the overlay
+        });
+    </script>
 
 </body>
 </html>
