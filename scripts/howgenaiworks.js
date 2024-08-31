@@ -3,9 +3,17 @@ fetch('public/howgenaiworks.json')
     .then(chapters => {
         let currentChapter = 0;
 
-        function createNavigationButtons(chapters) {
-            const buttonContainer = document.getElementById('how-genai-works-chapter');
+        const buttonContainer = document.getElementById('how-genai-works-chapter');
+        const chapterTitleElement = document.getElementById("how-genai-works-chapter-title");
+        const chapterTextElement = document.getElementById("how-genai-works-chapter-text");
+        const imgElement = document.getElementById("how-genai-works-animation");
+        const animation = document.getElementById("genai-image-container");
 
+        preload = function () {
+            loadNewScript('scripts/latentspace-animation.js', 'genai-image-container');
+        }
+
+        function createNavigationButtons(chapters) {
             chapters.forEach((chapter, index) => {
                 const chapterSpan = document.createElement('span');
                 chapterSpan.innerText = chapter.title;
@@ -19,13 +27,12 @@ fetch('public/howgenaiworks.json')
         }
         
         function updateContent(index) {
+            currentChapter = index;
             const chapter = chapters[index];
             console.log("Updating content for chapter:", chapter.title);
-            
-            document.getElementById("how-genai-works-chapter-title").innerText = chapter.title;
-            document.getElementById("how-genai-works-chapter-text").innerHTML = chapter.text;
-            const imgElement = document.getElementById("how-genai-works-animation");
-            const animation = document.getElementById("genai-image-container");
+
+            chapterTitleElement.innerText = chapter.title;
+            chapterTextElement.innerHTML = chapter.text;
 
             if (chapter.title === "LATENT SPACE") {
                 animation.style.display = 'block';
@@ -38,11 +45,6 @@ fetch('public/howgenaiworks.json')
             }
         }
 
-        // Call this function after DOMContentLoaded
-        document.addEventListener("DOMContentLoaded", function() {
-            loadNewScript('scripts/latentspace-animation.js', 'genai-image-container');
-        });
-        
         // Initial content load and button creation
         createNavigationButtons(chapters);
         updateContent(currentChapter);

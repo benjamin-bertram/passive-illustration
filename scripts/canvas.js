@@ -6,20 +6,33 @@ function canvasSketch(p) {
 
     p.preload = function() {
         // Load the initial image
-        canvasImage = p.loadImage(window.globalImageSrc);
+        //canvasImage = p.loadImage(window.globalImageSrc);
         alphaImage = p.loadImage('assets/CoverCanvas.webp');
         person = p.loadModel('assets/betrachter.obj', true);
     };
 
+    p.updateImage = function(globalImageObject) {
+        // Check if the global image object has finished loading
+        if (globalImageObject.complete && globalImageObject.naturalHeight !== 0) {
+            canvasImage = p.createImage(globalImageObject.width, globalImageObject.height);
+            canvasImage.drawingContext.drawImage(globalImageObject, 0, 0);
+    
+            avgBrightness = calculateAverageBrightness(canvasImage);
+            setupCanvasImage();
+            p.redraw(); // Redraw the canvas after updating the image
+        } else {
+            console.error('Image not fully loaded or invalid.');
+        }
+    };
+    
+    // Instead of using p.preload, initialize the p5 sketch in setup with a default image or wait for the first update
     p.setup = function() {
         let canvas = p.createCanvas(300, 500, p.WEBGL);
         canvas.parent('canvas-container');
         p.noStroke();
-        p.textSize(100);
-        p.textAlign(p.CENTER, p.CENTER);
-
-        // Set up with the initial image
-        setupCanvasImage();
+        
+        canvasImage = p.createImage(globalImageObject.width, globalImageObject.height);
+        canvasImage.drawingContext.drawImage(globalImageObject, 0, 0);
     };
 
     // Function to set up the canvas with the current image
@@ -32,14 +45,6 @@ function canvasSketch(p) {
         maskedOverlay = overlayImage.get();
         maskedOverlay.mask(alphaImage);
     }
-
-    // Update image dynamically
-    p.updateImage = function(newImageUrl) {
-        canvasImage = p.loadImage(newImageUrl, () => {
-            setupCanvasImage();
-            p.redraw(); // Redraw the canvas after updating the image
-        });
-    };
 
     function calculateAverageBrightness(img) {
         img.loadPixels();

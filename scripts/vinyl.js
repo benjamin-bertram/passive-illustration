@@ -10,10 +10,24 @@ function vinylSketch(p) {
         vinyl = p.loadImage('assets/Vinyl.png');
     };
 
+    p.updateImage = function(globalImageObject) {
+        // Check if the global image object has finished loading
+        if (globalImageObject.complete && globalImageObject.naturalHeight !== 0) {
+            albumImage = p.createImage(globalImageObject.width, globalImageObject.height);
+            albumImage.drawingContext.drawImage(globalImageObject, 0, 0);
+            avgBrightness = calculateAverageBrightness(albumImage);
+            p.updateOverlay();
+            p.redraw(); // Redraw the canvas after updating the image
+        };
+    };
+
     p.setup = function() {
         let canvas = p.createCanvas(300, 500, p.WEBGL);
         canvas.parent('vinyl-container');
         p.noStroke();
+        
+        albumImage = p.createImage(globalImageObject.width, globalImageObject.height);
+        albumImage.drawingContext.drawImage(globalImageObject, 0, 0);
 
         // Initialize overlay and textures
         p.updateOverlay();
@@ -96,12 +110,6 @@ function vinylSketch(p) {
     document.getElementById('vinyl-container').addEventListener('click', function() {
         zoomTarget = zoomTarget === 1 ? 1.55 : 1;
     });
-
-    p.updateImage = function(newImageUrl) {
-        albumImage = p.loadImage(newImageUrl, () => {
-            p.updateOverlay(); // Update the overlay once the new image is loaded
-        });
-    };
 }
 
 // Instantiate the vinyl sketch

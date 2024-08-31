@@ -1,46 +1,61 @@
 document.querySelectorAll('.headline').forEach((element) => {
-    let words = element.getAttribute('data-words').split(',');
-    let transitionDuration = 200;
-    let letterSpacing = 2; // Adjust this value for desired letter spacing
+    const words = element.getAttribute('data-words').split(',');
+    const transitionDuration = 200;
+    const letterSpacing = 2; // Adjust this value for desired letter spacing
+    const canvasHeight = 100;
+    const textSize = 50;
+    const blurStart = 7;
+    const blurEnd = 0;
 
+    // Pre-calculate text widths for all words
+    let textWidths = [];
+    let totalWidth = 0;
 
     new p5((p) => {
         p.setup = () => {
-            let canvas = p.createCanvas(element.clientWidth, 100);
+            let canvas = p.createCanvas(element.clientWidth, canvasHeight);
             canvas.parent(element); // Attach canvas to the specific div
             p.textFont('Poppins');
             p.textStyle(p.REGULAR);
             p.fill('black');
-            p.textSize(50);
+            p.textSize(textSize);
             p.textAlign(p.LEFT, p.CENTER);
+
+            // Calculate text widths once
+            words.forEach((word) => {
+                let wordWidth = p.textWidth(word);
+                textWidths.push(wordWidth);
+                totalWidth += wordWidth + letterSpacing * word.length;
+            });
         };
 
         p.draw = () => {
             p.clear();
             let phase = p.frameCount % (transitionDuration * words.length);
             let lerpValue = easeInOutQuad((phase % transitionDuration) / transitionDuration);
-            let currentWordIndex = p.floor(phase / transitionDuration);
-            //let startX = (p.width - totalTextWidth()) / 2; //for centred alignment
-            let startX = 10
+            let currentWordIndex = Math.floor(phase / transitionDuration);
+            let nextWordIndex = (currentWordIndex + 1) % words.length;
+            let startX = 10;
 
             words.forEach((word, i) => {
-                let blur = i === currentWordIndex ? p.lerp(7, 0, lerpValue) : i === (currentWordIndex + 1) % words.length ? p.lerp(0, 7, lerpValue) : 0;
+                let blur = 0;
+                if (i === currentWordIndex) {
+                    blur = p.lerp(blurStart, blurEnd, lerpValue);
+                } else if (i === nextWordIndex) {
+                    blur = p.lerp(blurEnd, blurStart, lerpValue);
+                }
+                
                 p.push();
                 p.drawingContext.filter = `blur(${blur}px)`;
 
-                //p.text(word, startX + p.textWidth(word) / 2, p.height / 2);
-
-                // Draw each letter with added spacing
                 let xPosition = startX;
                 for (let char of word) {
                     p.text(char, xPosition, p.height / 2);
-                    xPosition += p.textWidth(char) + letterSpacing; // Add custom letter spacing
+                    xPosition += p.textWidth(char) + letterSpacing;
                 }
-                
-                p.pop();
-                //startX += p.textWidth(word) + 10;
-                startX += p.textWidth(word) + letterSpacing * word.length; // Adjust the spacing between words
 
+                p.pop();
+                startX += textWidths[i] + letterSpacing * word.length; // Use pre-calculated widths
             });
         };
 

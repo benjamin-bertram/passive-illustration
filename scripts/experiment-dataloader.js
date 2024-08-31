@@ -1,47 +1,50 @@
 fetch('/public/experiments.json')
     .then(response => response.json())
     .then(data => {
-        // Initialize variables
         let currentExperimentIndex = 0;
         const experiments = data.experiments;
 
-        // Get DOM elements
         const imgElement = document.querySelector('#experiment-image img');
         const textElement = document.getElementById('experiment-text');
         const titleElement = document.getElementById('experiment-title');
         const prevButton = document.getElementById('previous');
         const nextButton = document.getElementById('next');
 
-        // Function to update the experiment display
+        window.globalImageObject = new Image();
+
         function updateExperiment(index) {
             currentExperimentIndex = index;
             const experiment = experiments[currentExperimentIndex];
 
-            // Update image
-            window.globalImageSrc = experiment.image;
-            imgElement.src = window.globalImageSrc;
+            // Update image source
+            window.globalImageObject.src = experiment.image;
 
-            // Update all p5 sketches with the new image
-            if (window.p5Instances && window.p5Instances.length > 0) {
-                window.p5Instances.forEach(p5Instance => {
-                    if (typeof p5Instance.updateImage === 'function') {
-                        p5Instance.updateImage(window.globalImageSrc);
-                    }
-                });
-            }
+            // Clear the current image for visual feedback
+            //imgElement.src = '';
 
-            // Update text
+            window.globalImageObject.onload = () => {
+                imgElement.src = window.globalImageObject.src;
+
+                // Set global src variable
+                window.globalImageSrc = window.globalImageObject.src;
+
+                // Ensure all p5 instances update after the image has loaded
+                if (window.p5Instances && window.p5Instances.length > 0) {
+                    window.p5Instances.forEach(p5Instance => {
+                        if (typeof p5Instance.updateImage === 'function') {
+                            p5Instance.updateImage(window.globalImageObject);
+                        }
+                    });
+                }
+            };
+
             textElement.innerHTML = experiment.text || '';
-
-            // Update text
             titleElement.innerHTML = experiment.title || '';
 
-            // Update button states
             prevButton.disabled = currentExperimentIndex === 0;
             nextButton.disabled = currentExperimentIndex === experiments.length - 1;
         }
 
-        // Event listeners for navigation buttons
         prevButton.addEventListener('click', () => {
             if (currentExperimentIndex > 0) {
                 updateExperiment(currentExperimentIndex - 1);
@@ -54,10 +57,8 @@ fetch('/public/experiments.json')
             }
         });
 
-        // Initialize with the first experiment
         updateExperiment(0);
     })
     .catch(error => {
         console.error('Error loading experiments:', error);
-        // You can display an error message to the user here if desired
     });

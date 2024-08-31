@@ -4,8 +4,18 @@ function bookSketch(p) {
 
     p.preload = function() {
         // Load images initially
-        coverImage = p.loadImage(window.globalImageSrc);
         alphaImage = p.loadImage('assets/CoverBuch.webp');
+    };
+
+    p.updateImage = function(globalImageObject) {
+        // Check if the global image object has finished loading
+        if (globalImageObject.complete && globalImageObject.naturalHeight !== 0) {
+            coverImage = p.createImage(globalImageObject.width, globalImageObject.height);
+            coverImage.drawingContext.drawImage(globalImageObject, 0, 0);
+            avgBrightness = calculateAverageBrightness(coverImage);
+            p.updateOverlay();
+            p.redraw(); // Redraw the canvas after updating the image
+        };
     };
 
     p.setup = function() {
@@ -13,6 +23,8 @@ function bookSketch(p) {
         canvas.parent('book-container');  // Attach the p5 canvas to the book container
         p.noStroke();
         p.updateOverlay();  // Create initial overlay with the loaded image
+        coverImage = p.createImage(globalImageObject.width, globalImageObject.height);
+        coverImage.drawingContext.drawImage(globalImageObject, 0, 0);
 
         for (let i = 0; i < 20; i++) {
             let offset = p.map(i, 0, 19, 2, 0);
@@ -89,11 +101,6 @@ function bookSketch(p) {
         }
     });
 
-    p.updateImage = function(newImageUrl) {
-        coverImage = p.loadImage(newImageUrl, () => {
-            p.updateOverlay(); // Update the overlay once the new image is loaded
-        });
-    };
 }
 
 // Instantiate the book sketch and ensure it's globally accessible

@@ -1,76 +1,83 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", async function() {
+    // Cache DOM elements to minimize lookups
     const videoElement = document.getElementById('how-diffusion-works-animation');
     const chapterTitleElement = document.getElementById('how-diffusion-works-chapter-title');
     const chapterTextElement = document.getElementById('how-diffusion-works-chapter-text');
-    const sliderElement = document.querySelector('.hdw-slider');  // Select the slider using the class
-    const sliderValueDisplay = document.querySelector('.hdw-slider-value'); // Select the value display using the class
+    const sliderElement = document.querySelector('.hdw-slider');
+    const sliderValueDisplay = document.querySelector('.hdw-slider-value');
+    const settingsContainer = document.getElementById('how-diffusion-works-chapters');
 
-    // Load JSON data
-    fetch('public/settings.json')
-        .then(response => response.json())
-        .then(data => {
-            initializeSettings(data);
-            loadChapterContent(data, 0); // Load the first chapter by default
-        })
-        .catch(error => console.error('Error fetching JSON:', error));
+    try {
+        const response = await fetch('public/settings.json');
+        const data = await response.json();
+        initializeSettings(data);
+        loadChapterContent(data, 0); // Load the first chapter by default
+    } catch (error) {
+        console.error('Error fetching JSON:', error);
+    }
 
-        function initializeSettings(data) {
-            const settingsContainer = document.getElementById('how-diffusion-works-chapters');
-        
-            data.forEach((chapter, index) => {
-                // Create a span for each chapter
-                const chapterSpan = document.createElement('span');
-                chapterSpan.innerText = chapter.title;
-                chapterSpan.className = 'page-number';
-                chapterSpan.addEventListener('click', () => {
-                    currentChapter = index;
-                    loadChapterContent(data, currentChapter);
-                });
-        
-                settingsContainer.appendChild(chapterSpan);
+    function initializeSettings(data) {
+        const fragment = document.createDocumentFragment(); // Use document fragment to minimize reflows
+        data.forEach((chapter, index) => {
+            const chapterSpan = document.createElement('span');
+            chapterSpan.innerText = chapter.title;
+            chapterSpan.className = 'page-number';
+            chapterSpan.addEventListener('click', () => {
+                loadChapterContent(data, index);
             });
-        }
+            fragment.appendChild(chapterSpan);
+        });
+        settingsContainer.appendChild(fragment); // Batch append operation
+    }
 
     function loadChapterContent(data, chapterIndex) {
         const chapter = data[chapterIndex];
-
-        // Update text content
         chapterTitleElement.textContent = chapter.title;
         chapterTextElement.innerHTML = chapter.text;
 
-        // Update video source
-        videoElement.querySelector('source').src = chapter.video;
-        videoElement.load(); // Reload the video with the new source
+        // Update video source and reload only if different to avoid unnecessary reloads
+        const videoSource = videoElement.querySelector('source');
+        if (videoSource.src !== chapter.video) {
+            videoSource.src = chapter.video;
+            videoElement.load();
+        }
+
+    // Set preload attribute based on network conditions or user settings
+    videoElement.preload = 'metadata'; // Or 'auto' based on your use case
 
         // Update slider values dynamically
         buildSlider(chapter.slidervalue);
     }
 
     function buildSlider(sliderValues) {
-        // Update slider range and reset its value
         sliderElement.min = 0;
         sliderElement.max = sliderValues.length - 1;
         sliderElement.value = 0;
 
-        // Display the initial slider value
         sliderValueDisplay.textContent = sliderValues[0];
 
-        // Handle slider input changes
-        sliderElement.addEventListener('input', function() {
+        // Debounce slider input handling
+        const debouncedSliderInput = debounce(() => {
             const currentIndex = sliderElement.value;
             const currentValue = sliderValues[currentIndex];
 
-            // Update the display with the current value
             sliderValueDisplay.textContent = currentValue;
-
-            // Call the function to update the video frame
             updateVideoFrame(videoElement, currentValue);
-        });
+        }, 100);
+
+        sliderElement.removeEventListener('input', debouncedSliderInput); // Prevent multiple listeners
+        sliderElement.addEventListener('input', debouncedSliderInput);
     }
 
-    // Optional: Function to handle video frame updates based on slider value
     function updateVideoFrame(video, frameNumber) {
-        // This function can be customized to control video based on the value from slider
-        video.currentTime = frameNumber; // Example: assume frameNumber correlates to time
+        video.currentTime = frameNumber;
+    }
+
+    function debounce(func, delay) {
+        let timeout;
+        return function(...args) {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(this, args), delay);
+        };
     }
 });

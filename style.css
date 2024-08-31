@@ -52,6 +52,8 @@ img {
 }
 
 .chapter-container {
+    display: flex;
+    flex-direction: column;
     height: 100vh; /* Full viewport height */
 }
 
@@ -63,6 +65,7 @@ img {
     display: grid;
     grid-template-columns: 1fr 1fr; /* Two columns of equal width */
     gap: 20px; /* Gap between grid items */
+    height: 100%;
     overflow: visible;
 }
 
@@ -363,7 +366,7 @@ h1 {
     cursor: pointer;
 }
 
-.page-number {
+.page-number, .experiment-button {
     padding: 5px 10px;
     background-color: #f0f0f0;
     border-radius: 5px;
@@ -371,7 +374,7 @@ h1 {
     transition: background-color 0.2s;
 }
 
-.page-number.active, .page-number:hover {
+.page-number.active, .page-number:hover, .experiment-button.active, .experiment-button:hover {
     background-color: #ff0000;
     color: white;
 }

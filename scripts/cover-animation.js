@@ -109,9 +109,6 @@ function createTile(x, y, z, textureUrl) {
         tile.position.set(x, y, z);
         tile.userData.originalPosition = { x: x, y: y, z: z };
 
-        tile.castShadow = true;
-        tile.receiveShadow = true;
-
         scene.add(tile);
         tiles.push(tile);
     });

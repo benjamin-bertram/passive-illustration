@@ -1,21 +1,28 @@
 function latentspaceAnimation(p) {
   let canvassize = 600;
+  const halfCanvas = canvassize/2;
+  const thirdCanvas = canvassize/3;
+  const twoThirdCanvas = canvassize*2/3;
+  const fiveSixthCanvas = canvassize*5/6
+  const sixthCanvas = canvassize/6
+
+
   let corners = {
     // Triangle
     tl: { 
       x: 50, 
       y: 50,
       params: {
-      vx: canvassize/2, vy: canvassize/3,
-      cp1x: canvassize/12*7, cp1y: canvassize/2,
-      vx1: canvassize/3*2, vy1: canvassize/3*2,
-      cp2x: canvassize/2, cp2y: canvassize/3*2,
-      vx2: canvassize/3, vy2: canvassize/3*2,
-      cp3x: canvassize/12*5, cp3y: canvassize/2,
-      vx3: canvassize/2, vy3: canvassize/3,
-      cp4x: canvassize/2, cp4y: canvassize/3,
-      vx4: canvassize/2, vy4: canvassize/3,
-      c: 'hsb(60, 100%, 90%)'}
+      vx: halfCanvas, vy: thirdCanvas,
+      cp1x: canvassize/12*7, cp1y: halfCanvas,
+      vx1: twoThirdCanvas, vy1: twoThirdCanvas,
+      cp2x: halfCanvas, cp2y: twoThirdCanvas,
+      vx2: thirdCanvas, vy2: twoThirdCanvas,
+      cp3x: canvassize/12*5, cp3y: halfCanvas,
+      vx3: halfCanvas, vy3: thirdCanvas,
+      cp4x: halfCanvas, cp4y: thirdCanvas,
+      vx4: halfCanvas, vy4: thirdCanvas,
+      c: 'yellow'}
     },
     
     // Square
@@ -23,73 +30,64 @@ function latentspaceAnimation(p) {
       x: 550, 
       y: 50, 
       params: {
-      vx: canvassize/3*2, vy: canvassize/3,
-      cp1x: canvassize/3*2, cp1y: canvassize/2,
-      vx1: canvassize/3*2, vy1: canvassize/3*2,
-      cp2x: canvassize/2, cp2y: canvassize/3*2,
-      vx2: canvassize/3, vy2: canvassize/3*2,
-      cp3x: canvassize/3, cp3y: canvassize/2,
-      vx3: canvassize/3, vy3: canvassize/3,
-      cp4x: canvassize/2, cp4y: canvassize/3,
-      vx4: canvassize/3*2, vy4: canvassize/3,
-      c:'hsb(360, 100%, 80%)'}
+      vx: twoThirdCanvas, vy: thirdCanvas,
+      cp1x: twoThirdCanvas, cp1y: halfCanvas,
+      vx1: twoThirdCanvas, vy1: twoThirdCanvas,
+      cp2x: halfCanvas, cp2y: twoThirdCanvas,
+      vx2: thirdCanvas, vy2: twoThirdCanvas,
+      cp3x: thirdCanvas, cp3y: halfCanvas,
+      vx3: thirdCanvas, vy3: thirdCanvas,
+      cp4x: halfCanvas, cp4y: thirdCanvas,
+      vx4: twoThirdCanvas, vy4: thirdCanvas,
+      c:'red'}
     },
     // Line (approximation using quadratic curves)
     bl: { 
       x: 550, 
       y: 550, 
       params: {
-      vx: canvassize/2, vy: canvassize/3,
-      cp1x: canvassize/2, cp1y: canvassize/2,
-      vx1: canvassize/2, vy1: canvassize/3*2,
-      cp2x: canvassize/2, cp2y: canvassize/3*2,
-      vx2: canvassize/2, vy2: canvassize/3*2,
-      cp3x: canvassize/2, cp3y: canvassize/2,
-      vx3: canvassize/2, vy3: canvassize/3,
-      cp4x: canvassize/2, cp4y: canvassize/3,
-      vx4: canvassize/2, vy4: canvassize/3,
-      c: 'hsb(120, 100%, 100%)'}
+      vx: halfCanvas, vy: thirdCanvas,
+      cp1x: halfCanvas, cp1y: halfCanvas,
+      vx1: halfCanvas, vy1: twoThirdCanvas,
+      cp2x: halfCanvas, cp2y: twoThirdCanvas,
+      vx2: halfCanvas, vy2: twoThirdCanvas,
+      cp3x: halfCanvas, cp3y: halfCanvas,
+      vx3: halfCanvas, vy3: thirdCanvas,
+      cp4x: halfCanvas, cp4y: thirdCanvas,
+      vx4: halfCanvas, vy4: thirdCanvas,
+      c: 'green'}
     },
     // Circle (approximation using quadratic curves)
     br: { 
       x: 300, 
       y: 550, 
       params: {
-      vx: canvassize/3*2, vy: canvassize/3,
-      cp1x: canvassize*5/6, cp1y: canvassize/2,
-      vx1: canvassize/3*2, vy1: canvassize/3*2,
-      cp2x: canvassize/2, cp2y: canvassize*5/6,
-      vx2: canvassize/3, vy2: canvassize/3*2,
-      cp3x: canvassize/6, cp3y: canvassize/2,
-      vx3: canvassize/3, vy3: canvassize/3,
-      cp4x: canvassize/2, cp4y: canvassize/6,
-      vx4: canvassize/3*2, vy4: canvassize/3,
-      c: 'hsb(240, 80%, 100%)'}
+      vx: twoThirdCanvas, vy: thirdCanvas,
+      cp1x: fiveSixthCanvas, cp1y: halfCanvas,
+      vx1: twoThirdCanvas, vy1: twoThirdCanvas,
+      cp2x: halfCanvas, cp2y: fiveSixthCanvas,
+      vx2: thirdCanvas, vy2: twoThirdCanvas,
+      cp3x: sixthCanvas, cp3y: halfCanvas,
+      vx3: thirdCanvas, vy3: thirdCanvas,
+      cp4x: halfCanvas, cp4y: sixthCanvas,
+      vx4: twoThirdCanvas, vy4: thirdCanvas,
+      c: 'blue'}
     }
   };
 
-    p.setup = function() {
+  p.setup = function() {
     const canvas = p.createCanvas(canvassize, canvassize);
-    canvas.parent('genai-image-container'); // Ensure this ID matches your HTML element
-    };
+    canvas.parent('genai-image-container');
+    drawStaticShapes();
+  };
 
-    p.draw = function() {
-    //p.background(0);
-    p.clear();
-
+  p.draw = function() {
+    p.background(255)
     let params = getParamsFromMouse();
+    drawDynamicShape(params)
+  };
 
-    p.beginShape();
-      p.fill(params.c);
-      p.noStroke();
-      p.strokeWeight(4);
-      p.vertex(params.vx, params.vy);
-      p.quadraticVertex(params.cp1x, params.cp1y, params.vx1, params.vy1);
-      p.quadraticVertex(params.cp2x, params.cp2y, params.vx2, params.vy2);
-      p.quadraticVertex(params.cp3x, params.cp3y, params.vx3, params.vy3);
-      p.quadraticVertex(params.cp4x, params.cp4y, params.vx4, params.vy4);
-    p.endShape(p.CLOSE);
-
+  function drawStaticShapes() {
     p.fill(corners.tl.params.c);
     p.triangle(0, 55, 28, 0, 56, 55);
     p.fill(corners.tr.params.c);
@@ -99,15 +97,35 @@ function latentspaceAnimation(p) {
     p.stroke(corners.bl.params.c);
     p.strokeWeight(5);
     p.line(0, 550, 0, 600);
-    };
+  };
 
-    function getParamsFromMouse() {
-    let tu = lerpObj(corners.tl.params, corners.tr.params, p.constrain(p.mouseX / p.width, 0, 1));
-    let bu = lerpObj(corners.bl.params, corners.br.params, p.constrain(p.mouseX / p.width, 0, 1));
-    return lerpObj(tu, bu, p.constrain(p.mouseY / p.height, 0, 1));
-    };
+  function drawDynamicShape(params) {
+    p.beginShape();
+    p.fill(params.c);
+    p.noStroke();
+    p.strokeWeight(4);
+    p.vertex(params.vx, params.vy);
+    p.quadraticVertex(params.cp1x, params.cp1y, params.vx1, params.vy1);
+    p.quadraticVertex(params.cp2x, params.cp2y, params.vx2, params.vy2);
+    p.quadraticVertex(params.cp3x, params.cp3y, params.vx3, params.vy3);
+    p.quadraticVertex(params.cp4x, params.cp4y, params.vx4, params.vy4);
+    p.endShape(p.CLOSE);
 
-  function lerpObj(a, b, t) {
+    drawStaticShapes(params);
+  }
+
+
+  function getParamsFromMouse() {
+    const mouseXConstrained = p.constrain(p.mouseX / p.width, 0, 1);
+    const mouseYConstrained = p.constrain(p.mouseY / p.height, 0, 1);
+
+    let tu = lerpObj(corners.tl.params, corners.tr.params, mouseXConstrained);
+    let bu = lerpObj(corners.bl.params, corners.br.params, mouseXConstrained);
+
+    return lerpObj(tu, bu, mouseYConstrained);
+  }
+
+function lerpObj(a, b, t) {
     return {
       vx: p.lerp(a.vx, b.vx, t),
       vy: p.lerp(a.vy, b.vy, t),

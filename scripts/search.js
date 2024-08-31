@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", async function() {
     let imageData = [];
     let filteredImageData = [];
     const searchInput = document.getElementById('searchInput');
@@ -9,36 +9,40 @@ document.addEventListener("DOMContentLoaded", function() {
     let currentPage = 0; 
     let totalPages = 0;
     let isFilterActive = false; // To check if a filter is active
+    let debounceTimer;
 
-    function fetchAndProcessData(filePath, isInitialLoad = false) {
-        fetch(filePath)
-            .then(response => response.text())
-            .then(data => {
-                const newData = data.split('\n').filter(filename => filename.trim() !== '').map(filename => {
-                    const parts = filename.split('-');
-                    return {
-                        filename: filename,
-                        token: parts[2].split('.')[0].toLowerCase(),
-                        url: `public/token/${filename}`
-                    };
-                });
+    // Image cache to store already loaded images
+    const imageCache = new Map();
 
-                if (isInitialLoad) {
-                    imageData = newData;  // Keep the full dataset in memory
-                    filteredImageData = [...imageData]; // Initially, filtered data is the same as full data
-                } else {
-                    filteredImageData = newData; // Set filtered data to the new filtered set
-                    isFilterActive = true;  // Mark that a filter is active
-                }
+    // Fetch and process data once
+    async function fetchAndProcessData(filePath, isInitialLoad = false) {
+        try {
+            const response = await fetch(filePath);
+            const data = await response.text();
+            const newData = data.split('\n').filter(filename => filename.trim() !== '').map(filename => {
+                const parts = filename.split('-');
+                return {
+                    filename: filename,
+                    token: parts[2].split('.')[0].toLowerCase(),
+                    url: `public/token/${filename}`
+                };
+            });
 
-                resetPagination();
-                displayImages();
-                updateNavigation();
-                updateResultCount();
+            if (isInitialLoad) {
+                imageData = newData;
+                filteredImageData = [...imageData];
+            } else {
+                filteredImageData = newData;
+                isFilterActive = true;
+            }
 
-                console.log(`Loaded ${newData.length} images from ${filePath}`);
-            })
-            .catch(error => console.error('Error fetching data:', error));
+            resetPagination();
+            displayImages();
+            updateNavigation();
+            updateResultCount();
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
     }
 
     function resetPagination() {
@@ -49,20 +53,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function search() {
         const searchTerm = searchInput.value.toLowerCase();
-
-        // If no filter is active, search across the full dataset
-        if (!isFilterActive) {
-            filteredImageData = imageData.filter(img => img.token.includes(searchTerm));
-        } else {
-            // Search within the current filtered data
-            filteredImageData = filteredImageData.filter(img => img.token.includes(searchTerm));
-        }
-
+        filteredImageData = isFilterActive ? filteredImageData : imageData;
+        filteredImageData = filteredImageData.filter(img => img.token.includes(searchTerm));
+        
         resetPagination();
         displayImages();
         updateNavigation();
         updateResultCount();
-        console.log(`Found ${filteredImageData.length} matches`);
     }
 
     function displayImages() {
@@ -70,15 +67,32 @@ document.addEventListener("DOMContentLoaded", function() {
         const fragment = document.createDocumentFragment();
         const start = currentPage * maxImages;
         const end = Math.min(start + maxImages, filteredImageData.length);
-        const results = filteredImageData.slice(start, end);
 
-        results.forEach(img => {
+        filteredImageData.slice(start, end).forEach(img => {
             const div = document.createElement('div');
             div.className = 'image-item';
-            div.innerHTML = `
-                <img src="${img.url}" alt="${img.token}" loading="lazy" width="150" height="150">
-                <p>${img.token}</p>
-            `;
+
+            // Check if image is already cached
+            if (imageCache.has(img.url)) {
+                // Use cached image
+                div.innerHTML = `
+                    <img src="${imageCache.get(img.url)}" alt="${img.token}" width="150" height="150">
+                    <p>${img.token}</p>
+                `;
+            } else {
+                // Load image and cache it
+                const imageElement = new Image();
+                imageElement.src = img.url;
+                imageElement.onload = () => {
+                    // Store in cache after loading
+                    imageCache.set(img.url, img.url);
+                };
+
+                div.innerHTML = `
+                    <img src="${img.url}" alt="${img.token}" loading="lazy" width="150" height="150">
+                    <p>${img.token}</p>
+                `;
+            }
             fragment.appendChild(div);
         });
 
@@ -101,9 +115,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const startPage = Math.max(currentPage - 2, 0);
         const endPage = Math.min(startPage + maxPageButtons, totalPages);
 
-        if (startPage > 0) {
-            fragment.appendChild(document.createTextNode('...'));
-        }
+        if (startPage > 0) fragment.appendChild(document.createTextNode('...'));
 
         for (let i = startPage; i < endPage; i++) {
             const pageButton = document.createElement('span');
@@ -116,29 +128,24 @@ document.addEventListener("DOMContentLoaded", function() {
             fragment.appendChild(pageButton);
         }
 
-        if (endPage < totalPages) {
-            fragment.appendChild(document.createTextNode('...'));
-        }
+        if (endPage < totalPages) fragment.appendChild(document.createTextNode('...'));
 
         pageIndex.appendChild(fragment);
     }
 
     function updateResultCount() {
-        resultCount.innerText = `Found ${filteredImageData.length / 4} match${filteredImageData.length > 4 ? 'es' : ''}`;
+        resultCount.innerText = `Found ${filteredImageData.length} match${filteredImageData.length !== 1 ? 'es' : ''}`;
     }
-
-    // Initial fetch of the main dataset
-    fetchAndProcessData('/benjaminbertram_com/filenames2.txt', true);
 
     // Add event listeners to filter buttons
     document.querySelectorAll('.page-number').forEach(span => {
-        span.addEventListener('click', () => {
-            fetchAndProcessData(span.dataset.file);
+        span.addEventListener('click', (event) => {
+            const filePath = event.target.dataset.file; // Ensure this data attribute is set correctly in HTML
+            fetchAndProcessData(filePath);
             isFilterActive = true; // Mark the filter as active
         });
     });
 
-    let debounceTimer;
     searchInput.addEventListener('input', () => {
         clearTimeout(debounceTimer);
         debounceTimer = setTimeout(() => {
@@ -146,4 +153,7 @@ document.addEventListener("DOMContentLoaded", function() {
             search();
         }, 300);
     });
+
+    // Initial data fetch
+    await fetchAndProcessData('/benjaminbertram_com/filenames2.txt', true);
 });

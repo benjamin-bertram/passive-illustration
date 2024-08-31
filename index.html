@@ -83,7 +83,9 @@
                     <div id="how-genai-works-chapter-text" class="readable-text">This is the text for the current chapter.</div>
                 </div>
                 <div id="image-container" class="column">
-                    <img id="how-genai-works-animation" src="" alt="Animated Image" class="animated-image">
+                    <div class="animated-image-container">   
+                        <img id="how-genai-works-animation" src="" alt="Animated Image" class="animated-image">
+                    </div>
                     <div id="genai-image-container" style="cursor: crosshair;">
                         <script src="scripts/latentspace-animation.js"></script>
                     </div>
@@ -223,16 +225,16 @@
         <!-- Experiments -->
 
         <div id="latent-experiments" class="chapter-container">
-            <div id="headline3" class="headline" data-words="LATENT,EXPERIMENTS"></div>
+            <div id="headline3" class="headline" data-words="LATENT, EXPERIMENTS"></div>
             
             <div class="grid-container">
                 <div id="image-container" class="column">
                     <div id="experiment-image">
-                        <img src="" alt="Image by Benjamin Bertram generated with AI" width="300" height="400">
+                        <img id="1234" src="" alt="Image by Benjamin Bertram generated with AI" width=100% height=100% loading="lazy">
                     </div>
                     <div id="navigation-buttons">
-                        <span id="previous" class="page-number">Previous Variation</span>
-                        <span id="next" class="page-number">Next Variation</span>
+                        <span id="previous" class="experiment-button">Previous Variation</span>
+                        <span id="next" class="experiment-button">Next Variation</span>
                     </div>
                 </div>
                 <div id="text-container" class="column">
