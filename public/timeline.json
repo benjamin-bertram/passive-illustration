@@ -3,21 +3,21 @@
         "title": "1950s - Early Computer Graphics",
         "text": "The 1950s marked the beginning of computer graphics as a field. <i>John Whitney</i>, a pioneer in computer graphics, created abstract films using analog computers. In 1958, the film 'Vertigo', directed by <i>Alfred Hitchcock</i>, showcased one of the earliest uses of computer graphics in film, employing a hypnotic spiral effect to represent the protagonist's fear of heights.<br>This effect was created by <i>Saul Bass</i>, a graphic designer and filmmaker known for his distinctive style in title sequences and posters. The spiral effect was achieved using a mechanical analog computer known as the <strong>optical printer.</strong> This device allowed for the combination of multiple film elements into a single piece of film, using various photographic techniques like matte shots, fades, and color changes. For 'Vertigo,' Bass used a series of mathematically generated spirals and overlaid them on footage of an eye, creating the iconic and disorienting opening sequence. The spirals themselves were produced using a combination of physical mechanisms and photographic tricks, with a rotating spiral pattern filmed against a neutral background.&nbsp;<br>These early experiments laid the foundation for modern computer graphics by demonstrating the potential for technology to create entirely new visual experiences that were impossible with traditional methods alone.<br>",
         "alt": "Early computer graphics and the film Vertigo",
-        "image": "public/timeline/vertigo.gif",
+        "image": "public/timeline/generative_art.jpg",
         "year": 1958
     },
     {
         "title": "1960s - Ivan Sutherland's Sketchpad",
         "text": "Ivan Sutherland developed Sketchpad in the 1960s, the first graphical user interface and precursor to modern CAD systems. This innovation laid the foundation for interactive computer graphics.",
         "alt": "Ivan Sutherland and the Sketchpad program",
-        "image": "public/timeline/sketchpad.gif",
+        "image": "public/timeline/generative_art.jpg",
         "year": 1963
     },
     {
         "title": "1970s - Development of 3D Graphics",
         "text": "Ed Catmull, a co-founder of Pixar, developed foundational techniques in 3D graphics, including texture mapping and Z-buffering, allowing for more realistic rendering of 3D objects.",
         "alt": "Ed Catmull's advancements in 3D graphics",
-        "image": "public/timeline/catmull.gif",
+        "image": "public/timeline/generative_art.jpg",
         "year": 1974
     },
     {

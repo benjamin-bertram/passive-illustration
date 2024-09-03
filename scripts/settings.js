@@ -34,27 +34,33 @@ document.addEventListener("DOMContentLoaded", async function() {
         const chapter = data[chapterIndex];
         chapterTitleElement.textContent = chapter.title;
         chapterTextElement.innerHTML = chapter.text;
-
+    
         // Update video source and reload only if different to avoid unnecessary reloads
         const videoSource = videoElement.querySelector('source');
         if (videoSource.src !== chapter.video) {
             videoSource.src = chapter.video;
             videoElement.load();
+    
+            // Once the video is loaded, set the initial frame based on initialSliderIndex
+            videoElement.onloadeddata = function() {
+                const initialIndex = chapter.initialSliderIndex;
+                updateVideoFrame(videoElement, initialIndex);
+            };
         }
-
-    // Set preload attribute based on network conditions or user settings
-    videoElement.preload = 'metadata'; // Or 'auto' based on your use case
-
-        // Update slider values dynamically
-        buildSlider(chapter.slidervalue);
+    
+        // Set preload attribute based on network conditions or user settings
+        videoElement.preload = 'metadata'; // Or 'auto' based on your use case
+    
+        // Update slider values dynamically and set the initial slider position
+        buildSlider(chapter.slidervalue, chapter.initialSliderIndex);
     }
 
-    function buildSlider(sliderValues) {
+    function buildSlider(sliderValues, initialSliderIndex = 0) {
         sliderElement.min = 0;
         sliderElement.max = sliderValues.length - 1;
-        sliderElement.value = 0;
+        sliderElement.value = initialSliderIndex;
 
-        sliderValueDisplay.textContent = sliderValues[0];
+        sliderValueDisplay.textContent = sliderValues[initialSliderIndex];
 
         // Debounce slider input handling
         const debouncedSliderInput = debounce(() => {
@@ -69,8 +75,8 @@ document.addEventListener("DOMContentLoaded", async function() {
         sliderElement.addEventListener('input', debouncedSliderInput);
     }
 
-    function updateVideoFrame(video, frameNumber) {
-        video.currentTime = frameNumber;
+    function updateVideoFrame(video, frameIndex) {
+        video.currentTime = frameIndex / 30;
     }
 
     function debounce(func, delay) {

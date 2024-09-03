@@ -129,6 +129,10 @@ h1, .readable-text {
     position: relative; /* Relative positioning to use pseudo-element */
 }
 
+p {
+    margin-top: 0;    /* Removes top padding */
+}
+
 h1 {
     text-align: left;
     font-size: 2vw;
@@ -143,9 +147,18 @@ h1 {
 /* Styles for rows within columns to ensure they take full width */
 
 #slider {
+    width: 80%;
     padding: 20px;
-    align-items: center;
-    gap: 10px;
+    margin-left: 70px;
+    display: flex;
+    align-items: center;       /* Align items vertically in the center */
+    justify-content: center;   /* Center items horizontally */
+    gap: 10px;                 /* Space between items */
+}
+
+.display {
+    min-width: 165px;  /* Adjust this value based on your needs */
+    text-align: left; /* Center the text within the fixed-width container */
 }
 
 /*********** Baseline, reset styles ***********/
