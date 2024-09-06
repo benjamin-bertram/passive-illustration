@@ -16,10 +16,10 @@
         <div class="spinner"></div>
     </div>
 
-    <!-- Animation -->
+    <!-- Animation 
     <div id="threejs-container">
     <script src="scripts/cover-animation.js"></script>
-    </div>
+    </div>-->
 
     <!-- Additional content to enable scrolling -->
     <div class="main-content">
@@ -32,7 +32,7 @@
                 <ul>
                     <li><a href="#history-of-genai">History of Generative AI</a></li>
                     <li><a href="#how-genai-works">How Generative AI Works</a></li>
-                    <li><a href="#how-diffusion-works">How Generative AI Works</a></li>
+                    <li><a href="#how-diffusion-works">How Diffusion Works</a></li>
                     <li><a href="#token-library">Token Library</a></li>
                     <li><a href="#controlability">Control Latent Space</a></li>
                     <li><a href="#metacreativity">Metacreative Latent Spaces</a></li>
@@ -47,22 +47,19 @@
         <div id="history-of-genai" class="chapter-container">
             <div id="headline2" class="headline" data-words="HISTORY, OF, GENERATIVE AI"></div>
             <div class="grid-container">
-                <div id="image-container" class="column">
+                <div id="image-container" class="column" style="justify-content: center;">
                     <div class="animated-image-container">
-                        <img id="timeline-animation" src="" alt="Animated Timeline" class="animated-image">
+                        <img id="timeline-animation" src="" alt="Animated Timeline" class="animated-image" loading="lazy">
                     </div>
                 </div>
-                <div id="text-container" class="column">
-                    <div class="row-1"> 
+                <div id="text-container" class="column" style="align-items: flex-start;">
+                    <div class="row-1-timeline"> 
                         <h1 id="chapter-title">Chapter Title</h1>
                         <div id="chapter-text" class="readable-text">This is the text for the current chapter.</div>
                     </div>
-                    <div class="row-2">
+                    <div class="row-2-timeline">
                         <div id="timeline">
-                            <div id="left-arrow">&#9664;</div>
                             <svg id="timeline-svg" class="timeline-svg"></svg>
-                            <!-- JavaScript will dynamically create and insert the timeline markers here -->
-                            <div id="right-arrow">&#9654;</div> 
                         </div>  
                     </div>
                 </div>
@@ -84,7 +81,7 @@
                 </div>
                 <div id="image-container" class="column">
                     <div class="animated-image-container">   
-                        <img id="how-genai-works-animation" src="" alt="Animated Image" class="animated-image">
+                        <img id="how-genai-works-animation" src="" alt="Animated Image" class="animated-image" loading="lazy">
                     </div>
                     <div id="genai-image-container" style="cursor: crosshair;">
                         <script src="scripts/latentspace-animation.js"></script>
@@ -128,22 +125,13 @@
                 <div id="text-container" class="column">
                     <div class="row-1"> 
                         <div id="chapter-text" class="readable-text">
-                            A token library is an innovative tool designed to search and display tokens from CLIP (Contrastive Language-Image Pre-training) for image generators. CLIP, developed by OpenAI, is a neural network trained on a vast dataset of image-text pairs. It has demonstrated remarkable abilities in understanding the relationship between textual descriptions and visual content.
-                            <p>The token library acts as an intermediary, allowing users to efficiently harness the power of CLIP within their image generation workflows. By providing a searchable interface for CLIP's extensive vocabulary, it enables creators to find the most appropriate and effective tokens for their desired visual outputs.</p>
-                            <h2>The Mechanics of Token Libraries</h2>
-                            <p>At its core, a token library operates on a simple yet powerful principle:</p>
-                            <ol>
-                            <li><b>Input</b>: Users enter a textual description or concept.</li>
-                            <li><b>Token Extraction</b>: The library processes this input through CLIP's tokenizer.</li>
-                            <li><b>Semantic Search</b>: It then performs a semantic search across its database of pre-computed token embeddings.</li>
-                            <li><b>Result Display</b>: The most relevant tokens are presented to the user, often accompanied by sample images or usage statistics.</li>
-                            </ol>
+                            <p><strong>Tokens</strong> represent the smallest meaningful text units in a prompt. While models like <i>CLIP</i> have advanced understanding and generating relationships between text and images, they are not free from bias: CLIP was trained on 400 million image-text pairs scraped from the internet, reflecting biases inherent in online culture, particularly Western (and American) content, where certain subjects dominate (e.g., celebrities or pop culture).</p><p>Words linked to certain genders, ethnicities, or professions reflect stereotypes, influencing the model’s outputs. These biases emerge because embeddings mirror word associations in the training data. The training images reflect skewed demographics (e.g., most images of "doctors" showing men), so the model's image embeddings perpetuate such biases. CLIP’s contrastive learning amplified these biases by reinforcing incorrect associations between text and images. For instance, frequent associations of "CEO" with male images cause the model to favor such associations, perpetuating stereotypes.</p><p>Efforts to address these biases include curating more diverse datasets, refining tokenization, and adjusting training algorithms, but completely eliminating bias remains challenging given the scale of data required.</p>
                         </div>
                     </div>
                     <div class="row-2">
                         <div id="searchfield">
                             <input type="text" id="searchInput" placeholder="Search by token...">
-                            <h1 style="text-align: center;">or concept:</h1>
+                            <p style="text-align: center;">or <strong>concept:</strong></p>
                             <div class="page-index">
                                 <span class="page-number" data-file="benjaminbertram_com/countries_filenames.txt" id="countriesButton">Countries</span>
                                 <span class="page-number" data-file="benjaminbertram_com/names_filenames.txt" id="namesButton">Names</span>
@@ -276,15 +264,6 @@ rakshit
     <script src="scripts/lerping-headline.js"></script>
 
     <script src="scripts/timeline.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            document.querySelectorAll('.timeline-year').forEach(function(element) {
-                let yearText = element.innerText;
-                let integerYear = yearText.split('.')[0]; // Remove the decimal part
-                element.innerText = integerYear; // Update the element's text
-            });
-        });
-    </script>
 
     <script src="scripts/howgenaiworks.js"></script>
     <script src="scripts/settings.js"></script>
@@ -304,8 +283,7 @@ rakshit
         loadScript('scripts/book.js', 'book-container');
         loadScript('scripts/canvas.js', 'canvas-container');
         loadScript('scripts/vinyl.js', 'vinyl-container');
-    </script> 
-    <script>
+
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -318,8 +296,34 @@ rakshit
                 });
             });
         });
-    </script>
-    <script>
+
+        // Function to handle intersection changes
+        function handleIntersection(entries, observer) {
+            entries.forEach(entry => {
+                const imgElement = entry.target;
+
+                if (entry.isIntersecting) {
+                    // Element is in the viewport, start the animation
+                    imgElement.classList.add('start-animation');
+                } else {
+                    // Element is out of the viewport, stop the animation
+                    imgElement.classList.remove('start-animation');
+                }
+            });
+        }
+
+        // Create an Intersection Observer instance
+        const observer = new IntersectionObserver(handleIntersection, {
+            root: null, // Use the viewport as the container
+            rootMargin: '0px',
+            threshold: 0.1 // Adjust threshold as needed
+        });
+
+        // Observe all animated images
+        document.querySelectorAll('.animated-image').forEach(imgElement => {
+            observer.observe(imgElement);
+        });
+
         window.addEventListener('load', function() {
             const loadingOverlay = document.getElementById('loading-overlay');
             loadingOverlay.classList.add('hidden'); // Adds the 'hidden' class to fade out and hide the overlay

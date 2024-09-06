@@ -19,9 +19,6 @@ fetch('/public/experiments.json')
             // Update image source
             window.globalImageObject.src = experiment.image;
 
-            // Clear the current image for visual feedback
-            //imgElement.src = '';
-
             window.globalImageObject.onload = () => {
                 imgElement.src = window.globalImageObject.src;
 

@@ -6,7 +6,6 @@ function canvasSketch(p) {
 
     p.preload = function() {
         // Load the initial image
-        //canvasImage = p.loadImage(window.globalImageSrc);
         alphaImage = p.loadImage('assets/CoverCanvas.webp');
         person = p.loadModel('assets/betrachter.obj', true);
     };

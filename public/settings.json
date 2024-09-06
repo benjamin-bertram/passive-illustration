@@ -4,7 +4,7 @@
         "text": "<p><strong>Stable Diffusion</strong> is basically a text-to-image model that generates images based on a text prompt. It belongs to a class of AI models known as <i>diffusion models</i>, which are trained on large datasets where each image is progressively diffused into noise through a process called forward diffusion. The model learns to reverse this process, known as reverse diffusion, to reconstruct the original image. By mastering this reversal, the model can generate new, coherent images from random noise that resemble the training data.</p><p>To create an image, Stable Diffusion starts with a completely random pattern in a latent space. The model then uses the reverse diffusion process, step by step, to remove noise from this initial pattern, gradually revealing an image that matches the given text prompt. Since Stable Diffusion is a conditional image generator, it uses the prompt to guide this denoising process. This allows the model to generate different images from the same starting noise, based on the input prompt.</p><p>The sampling process in Stable Diffusion involves an algorithm that controls how noise is removed at each step. Initially, larger steps are taken to set the global structure or composition of the image. As the process continues, the steps become smaller to refine finer details, such as textures and edges. This gradual refinement means that in early steps the image starts to emerge from the noise but remains blurry. With each step, the image becomes clearer, and around 20 steps, the model converges, focusing on enhancing fine details rather than altering the overall composition.</p>",
         "video": "public/settings/steps.mp4",
         "initialSliderIndex": 20,
-        "slidervalue": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35]
+        "slidervalue": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
     },
     {
         "title": "Seed",
@@ -18,7 +18,7 @@
         "text": "<p>Simply put, the CFG scale (<strong>Classifier Free Guidance scale</strong>), or guidance scale, is a parameter that controls how closely the image generation process follows the text prompt. Unlike <i>traditional diffusion</i> models, which use a separate classifier to guide the model toward specific outputs (like generating an image of a cat when prompted), Classifier-Free Guidance integrates this guidance directly within the diffusion model. The model is trained in both 'guided' (with a prompt) and 'unguided' (with no prompt) modes, allowing it to learn how to generate images that either closely follow or loosely interpret the text prompt.</p><p>The CFG scale essentially balances the <i>fidelity</i> of the output with <i>creative freedom</i>, allowing users to fine-tune how literally the AI interprets the input text. Higher CFG values make the model adhere more strictly to the prompt, producing images that closely match the specified details. However, at very high CFG values, the images can become overly literal, leading to potential issues like oversaturation, loss of detail, or artifacts, especially if the prompt is too restrictive or lacks sufficient descriptive detail.</p><p>Finding the optimal CFG value is often a matter of experimentation and balancing between prompt fidelity and image quality. Typically, a CFG value between 7 and 11 is considered ideal for most use cases, as it strikes a balance between following the prompt closely and maintaining high visual quality. If the CFG value is set too high, the generated image might suffer from excessive sharpness or noise; if set too low, the output may drift too far from the intended prompt.</p>",
         "video": "public/settings/cfg.mp4",
         "initialSliderIndex": 14,
-        "slidervalue": [1,1.5,2,2.5,3,3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,12.5,13,13.5,14,14.5,15,15.5,16,16.5,17,17.5,18,18.5,19,19.5,20,20.5,21,21.5,22,22.5,23,23.5,24,24.5,25,25.5,26,26.5,27,27.5,28,28.5,29,29.5,30]
+        "slidervalue": [1,1.5,2,2.5,3,3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,12.5,13,13.5,14,14.5,15,15.5,16,16.5,17,17.5,18,18.5,19,19.5,20]
     },
     {
         "title": "Weight",
@@ -36,9 +36,9 @@
     },
     {
         "title": "Denoising Strength",
-        "text": "The 1990s saw the rise of digital media and generative art. Artists began using algorithms to create digital artwork, with fractal algorithms generating complex, self-similar patterns.",
-        "video": "public/settings/test.mp4",
-        "initialSliderIndex": 1,
-        "slidervalue": [0.1,0.3,0.5,0.7,1]
+        "text": "<p>During the generation process, the algorithm removes noise step by step (<i>denoising</i>). With the <strong>denoising strength</strong>, you control <i>how much</i> noise is removed during image generation. This parameter ranges from 0 to 1: a value of 0 retains most of the original input with minimal changes, while a value of 1 completely transforms the input, creating an entirely new image. Instead of starting with random noise, you can also provide an image as input. A denoising strength of 0 will keep the input image largely intact, while a value of 1 will generate a new image based on the noise.</p><p>When using an input image, a low denoising strength (close to 0) preserves most of the original image, making subtle edits. Higher values (closer to 1) introduce more variation, which is useful for significant alterations. This has several applications: in <strong>img2img</strong>, denoising strength controls how much the output deviates from the input image, with low values used for minor tweaks and high values for major changes. In <strong>inpainting</strong>, moderate values are recommended to ensure new content blends seamlessly with the existing image.</p><p>Adjusting the denoising strength balances detail preservation with creative transformation, allowing for both subtle refinements and dramatic changes. A mid-range value offers a good compromise between maintaining the structure of the input and introducing creative variations.</p>",
+        "video": "public/settings/denoising.mp4",
+        "initialSliderIndex": 10,
+        "slidervalue": [0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0]
     }
 ]

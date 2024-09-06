@@ -34,7 +34,7 @@ fetch('public/howgenaiworks.json')
             chapterTitleElement.innerText = chapter.title;
             chapterTextElement.innerHTML = chapter.text;
 
-            if (chapter.title === "LATENT SPACE") {
+            if (chapter.title === "Latent Space") {
                 animation.style.display = 'block';
                 imgElement.style.display = 'none'; // Hide the image element when showing the p5 sketch
             } else {

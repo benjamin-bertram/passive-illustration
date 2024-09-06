@@ -225,12 +225,10 @@ h1 {
 
 #timeline {
     position: absolute; /* Fixed positioning within the relative parent container */
-    bottom: 0; /* Align to the bottom of the parent container */
-    left: 0; /* Align to the left */
-    right: 0; /* Stretch to the right */
-    height: 300px; /* Adjust height as needed */
+    bottom: -100px; /* Align to the bottom of the parent container */
+    left: 30px; /* Align to the left */
+    height: 600px; /* Adjust height as needed */
     width: 100%; /* Full width of the container */
-    background-color: #ffffff; /* Optional: Background color for visibility */
     display: flex; /* Flexbox for alignment if needed */
     justify-content: center; /* Center content horizontally */
     align-items: center; /* Center content vertically */
@@ -263,14 +261,14 @@ h1 {
 /* For active markers, if they need to be above everything */
 .timeline-marker.active {
     background-color: red;
-    width: 15px;
-    height: 15px;
+    width: 20px;
+    height: 20px;
 }
 
 /* Ensure years are correctly positioned relative to markers */
 .timeline-year {
     position: absolute;
-    transform: translate(-100%, -130%) rotate(14deg);
+    transform: translate(-130%, -110%) rotate(14deg);
     font-size: 12px;
     color: black;
 }
@@ -281,27 +279,21 @@ h1 {
     pointer-events: none;
 }
 
-#left-arrow, #right-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    font-size: 1em;
-    user-select: none;
-}
-
-#left-arrow {
-    left: -49px;
-}
-
-#right-arrow {
-    right: -29px;
-}
-
 .row-1-timeline {
     width: 80%;
     height: 400px;
-    background-color: #ffffff;
+    overflow: visible;
+    align-items: left;
+}
+
+/* For the second row with the timeline */
+.row-2-timeline {
+    position: relative;
+    width: 100%; /* Adjust as necessary */
+    height: 100%; /* Ensure it takes up the full height of its parent */
+    display: flex; /* Flexbox to manage its children if needed */
+    align-items: center;
+    justify-content: space-between; /* Ensure content stretches to the sides */
 }
 
 /* search formats */
@@ -381,6 +373,7 @@ h1 {
 
 .page-number, .experiment-button {
     padding: 5px 10px;
+    margin-bottom: 20px;
     background-color: #f0f0f0;
     border-radius: 5px;
     cursor: pointer;
@@ -400,12 +393,19 @@ h1 {
 }
   
 .animated-image {
+    will-change: transform;
     width: 100%; /* Sets width to 40% of the container */
-    animation: subtleMovement 20s ease-in-out infinite; /* Keyframe animation */
+    transform: rotate3d(1, 0, 0, -6deg) rotate3d(0, 1, 0, 6deg);
+    /* animation: subtleMovement 20s ease-in-out infinite; /* Keyframe animation
     transform-style: preserve-3d; /* Preserves 3D transformations for child elements */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-  
+
+/* Apply the animation only when this class is active */
+.start-animation {
+    /*animation: subtleMovement 20s /*infinite;*/
+}
+
 @keyframes subtleMovement {
     0% {
     transform: rotate3d(1, 0, 0, -6deg) rotate3d(0, 1, 0, 6deg);

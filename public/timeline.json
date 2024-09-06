@@ -1,135 +1,133 @@
 [
     {
         "title": "1950s - Early Computer Graphics",
-        "text": "The 1950s marked the beginning of computer graphics as a field. <i>John Whitney</i>, a pioneer in computer graphics, created abstract films using analog computers. In 1958, the film 'Vertigo', directed by <i>Alfred Hitchcock</i>, showcased one of the earliest uses of computer graphics in film, employing a hypnotic spiral effect to represent the protagonist's fear of heights.<br>This effect was created by <i>Saul Bass</i>, a graphic designer and filmmaker known for his distinctive style in title sequences and posters. The spiral effect was achieved using a mechanical analog computer known as the <strong>optical printer.</strong> This device allowed for the combination of multiple film elements into a single piece of film, using various photographic techniques like matte shots, fades, and color changes. For 'Vertigo,' Bass used a series of mathematically generated spirals and overlaid them on footage of an eye, creating the iconic and disorienting opening sequence. The spirals themselves were produced using a combination of physical mechanisms and photographic tricks, with a rotating spiral pattern filmed against a neutral background.&nbsp;<br>These early experiments laid the foundation for modern computer graphics by demonstrating the potential for technology to create entirely new visual experiences that were impossible with traditional methods alone.<br>",
-        "alt": "Early computer graphics and the film Vertigo",
-        "image": "public/timeline/generative_art.jpg",
+        "text": "<p>The 1950s marked the beginning of computer graphics as a field. <i>John Whitney</i>, an early pioneer, used analog computers to create abstract films. In 1958, <i>Alfred Hitchcock's</i> 'Vertigo' featured one of the first uses of computer graphics with a spiral effect symbolizing fear of heights. This effect, designed by <i>Saul Bass</i>, was achieved using an <strong>optical printer</strong>, which combined various film elements through techniques like matte shots and fades. This device allowed for the combination of multiple film elements into a single piece of film, using various photographic techniques like matte shots, fades, and color changes.</p><p>For 'Vertigo,' Bass used a series of <i>mathematically</i> generated spirals and overlaid them on footage of an eye, creating the iconic and disorienting opening sequence. The spirals themselves were produced using a combination of physical mechanisms and photographic tricks, with a rotating spiral pattern filmed against a neutral background. These early experiments laid the foundation for modern computer graphics and demonstrated the potential for technology to create entirely new visual experiences, impossible before with traditional methods alone.</p>",
+        "image": "public/timeline/vertigo.webp",
         "year": 1958
     },
     {
         "title": "1960s - Ivan Sutherland's Sketchpad",
-        "text": "Ivan Sutherland developed Sketchpad in the 1960s, the first graphical user interface and precursor to modern CAD systems. This innovation laid the foundation for interactive computer graphics.",
+        "text": "<p>In the 1960s, <i>Ivan Sutherland</i> revolutionized computer graphics with the development of <strong>Sketchpad</strong>, the first graphical user interface and a precursor to modern <i>Computer-Aided Design</i> (CAD) systems. Sketchpad was groundbreaking in its ability to allow users to interact directly with a computer display using a light pen, making it possible to draw geometric shapes and manipulate them in real-time. This interactive approach was a significant departure from the punch cards and text-based commands that dominated computing at the time.</p><p>Sketchpad introduced concepts like object-oriented programming, constraints, and graphical hierarchies, which are fundamental to today’s graphics and CAD software. By enabling a visual and more intuitive way of interacting with computers, Sutherland’s innovation laid the foundation for interactive computer graphics, inspiring future developments in fields ranging from engineering and architecture to video games and digital art.</p>",
         "alt": "Ivan Sutherland and the Sketchpad program",
-        "image": "public/timeline/generative_art.jpg",
+        "image": "public/timeline/sketchpad.webp",
         "year": 1963
     },
     {
         "title": "1970s - Development of 3D Graphics",
-        "text": "Ed Catmull, a co-founder of Pixar, developed foundational techniques in 3D graphics, including texture mapping and Z-buffering, allowing for more realistic rendering of 3D objects.",
+        "text": "<p><i>Ed Catmull</i>, a co-founder of <strong>Pixar</strong>, made significant contributions to 3D graphics, developing foundational techniques that transformed how digital images are rendered. Among his most notable achievements are the development of texture mapping and Z-buffering. Texture mapping involves applying a 2D image, or “texture”, to a 3D surface to give it more detail and realism, such as simulating the appearance of wood grain, fabric, or skin. This technique allows for intricate surface details without the need to increase the geometric complexity of the model itself. Catmull's pioneering work laid the groundwork for modern 3D rendering, enabling more lifelike and dynamic digital environments. His innovations have had a profound impact on the animation industry, helping to usher in a new era of computer-generated films and revolutionizing visual storytelling.</p>",
         "alt": "Ed Catmull's advancements in 3D graphics",
-        "image": "public/timeline/generative_art.jpg",
+        "image": "public/timeline/catmull.webp",
         "year": 1974
     },
     {
         "title": "1980s - Evolution of Neural Networks and Ray Tracing",
-        "text": "Neural networks gained attention in the 1980s, with the rediscovery of backpropagation, essential for training neural networks. Graphics techniques like ray tracing, introduced by Turner Whitted, enabled photorealistic rendering.",
+        "text": "<p>In the 1980s, neural networks gained significant attention with the rediscovery of the <strong>backpropagation</strong> algorithm, a crucial advancement for training neural networks. Backpropagation allowed for more effective adjustment of neural network weights, enabling these models to learn from large datasets and improve their accuracy over time. This breakthrough laid the groundwork for modern machine learning and artificial intelligence, driving innovation across various fields, including computer graphics.</p><p>Concurrently, graphics techniques saw a leap forward with <i>Turner Whitted</i>'s introduction of <strong>ray tracing</strong>, a method for achieving photorealistic rendering by simulating the way light interacts with surfaces. Ray tracing calculates reflections, refractions, and shadows with high precision, creating lifelike images that were previously impossible to produce. This method became a fundamental technique in visual effects, video games, and simulation, enhancing the realism of digital imagery. These innovations not only transformed computer graphics but also broadened the horizons of artificial intelligence research and applications.</p>",
         "alt": "Rise of neural networks and ray tracing",
-        "image": "public/timeline/Turner_Whitted-Ray-Traced-Spheres.jpg",
+        "image": "public/timeline/Turner_Whitted-Ray-Traced-Spheres.webp",
         "year": 1982
     },
     {
         "title": "1990s - Rise of Generative Art and Digital Media",
-        "text": "The 1990s saw the rise of digital media and generative art. Artists began using algorithms to create digital artwork, with fractal algorithms generating complex, self-similar patterns.",
+        "text": "<p>The 1990s marked a significant shift in the art world with the rise of digital media and the advent of <strong>generative art</strong>. During this time, artists began exploring the use of <i>algorithms</i> to create digital artwork, moving beyond traditional methods to embrace the capabilities of computers. One of the most notable techniques was the use of <strong>fractal algorithms</strong>, which generate complex, self-similar patterns that mimic natural forms like mountains, coastlines, and clouds. These fractal patterns captivated artists and audiences alike with their intricate, endless variations and mathematical beauty.</p><p>The 1990s saw artists experimenting with these algorithms to produce visually stunning and innovative pieces that were impossible to create by hand. This era also marked the beginning of a deeper exploration into the <i>relationship between art and technology</i>, with generative art challenging traditional notions of authorship and creativity. The ability to harness computers to generate unique, dynamic artwork paved the way for future developments in digital art, including the rise of interactive and immersive experiences. The digital revolution of the 1990s set the stage for a new wave of artistic expression, where technology became an integral tool for pushing the boundaries of visual creativity.</p>",
         "alt": "Generative art and digital media in the 1990s",
-        "image": "public/timeline/generative_art.jpg",
+        "image": "public/timeline/generative_art.webp",
         "year": 1990
     },
     {
         "title": "2000s - Rise of Internet",
-        "text": "The 1990s saw the rise of digital media and generative art. Artists began using algorithms to create digital artwork, with fractal algorithms generating complex, self-similar patterns.",
+        "text": "<p>The 2000s marked a transformative period for the <strong>internet</strong>, leading to its widespread adoption and integration into daily life. This decade saw the rise of broadband connections, which significantly increased internet speed and accessibility, enabling more interactive and media-rich experiences online. Social media platforms like <i>Facebook</i>,<i>Twitter</i>, and <i>LinkedIn</i> emerged, fundamentally changing how people connect, communicate, and share information.</p><p>The concept of <strong>Web 2.0</strong> also gained traction, emphasizing user-generated content, collaboration, and social networking, which allowed for more dynamic and participatory web experiences. Search engines, particularly <i>Google</i>, became essential tools for navigating the vast amount of information on the web, while innovations like cloud computing began to take shape, offering new ways to store and process data. The rise of mobile technology, especially smartphones, further extended the internet's reach, making it accessible anytime and anywhere. This era solidified the internet’s role as a vital infrastructure, driving global connectivity, transforming industries, and shaping modern society's communication, entertainment, and business landscapes.</p>",
         "alt": "Generative art and digital media in the 1990s",
-        "image": "public/timeline/internet.jpeg",
+        "image": "public/timeline/internet.webp",
         "year": 2000
     },
     {
-        "title": "2006 - Youtube",
-        "text": "The 1990s saw the rise of digital media and generative art. Artists began using algorithms to create digital artwork, with fractal algorithms generating complex, self-similar patterns.",
-        "alt": "Generative art and digital media in the 1990s",
-        "image": "public/timeline/Logo_of_YouTube_(2005-2006).svg.png",
-        "year": 2006
-    },
-    {
         "title": "2010s - Rise of Social Media",
-        "text": "The 1990s saw the rise of digital media and generative art. Artists began using algorithms to create digital artwork, with fractal algorithms generating complex, self-similar patterns.",
+        "text": "<p>The 2010s saw explosive growth in social media, fundamentally transforming how people connect, communicate, and consume information. Platforms like <i>Facebook</i>, <i>Twitter, Instagram, YouTube </i>and<i> Snapchat</i> became central to everyday life, allowing users to instantly share updates, photos, and videos with a global audience. This shift reshaped social interactions and provided businesses with powerful tools for targeted advertising and direct customer engagement. With lower barriers to entry than the previous decade, the 2010s gave rise to <strong>influencers</strong> and the <strong>content creator economy</strong>. Not only was it easier to create content with digital tools, the distribution via the Internet made it also easier to connect with others, exchange ideas and make a living from producing content.</p><p>By 2010, over <strong>5 billion images</strong> had been uploaded to platforms like <i>Flickr</i>, highlighting the era's surge in user-generated content. These developments not only changed the media landscape but also set the stage for data-driven algorithms like object recognition and image generation algorithms.</p>",
         "alt": "Generative art and digital media in the 1990s",
-        "image": "public/timeline/Social-Media-platforms.jpg",
+        "image": "public/timeline/Social-Media-platforms.webp",
         "year": 2010
     },
     {
-        "title": "2014 - Birth of Generative Adversarial Networks (GANs)",
-        "text": "Ian Goodfellow introduced GANs in 2014, a method that pitted two neural networks against each other to produce realistic images, revolutionizing fields like computer vision, art, and game development.",
+        "title": "2012 - The Breakthrough in Recognition Algorithms ",
+        "text": "<p>The 2010s marked a major leap in image recognition technology with the advent of <strong>Convolutional Neural Networks</strong> (CNNs). Building on earlier neural network research, CNNs introduced a revolutionary architecture that allowed for automated feature extraction from images, vastly improving the accuracy of object <i>detection</i> and <i>classification</i>. Models like <i>AlexNet</i>, which won the <i>ImageNet</i> competition in 2012, demonstrated the potential of CNNs by outperforming previous methods in recognizing objects across vast datasets.</p><p>This breakthrough in recognition algorithms not only advanced computer vision tasks such as facial recognition and autonomous navigation but also laid the groundwork for later applications in generative models. By enabling machines to better “see” and understand images, CNNs contributed directly to the rise of AI-generated art, where these networks are used to create new images by learning and mimicking visual patterns.</p>",
+        "alt": "Generative art and digital media in the 1990s",
+        "image": "public/timeline/alexnet.webp",
+        "year": 2012
+    },
+    {
+        "title": "2014 - Birth of (GANs)",
+        "text": "<p>In 2014, <i>Ian Goodfellow</i> introduced <strong>Generative Adversarial Networks</strong> (GANs), a groundbreaking method in artificial intelligence that revolutionized computer vision, art, and game development. GANs consist of two neural networks—a <i>generator</i> and a <i>discriminator</i>—that compete against each other. The generator creates images, while the discriminator evaluates them, distinguishing between real and generated images. This adversarial process continues until the generator produces images so realistic that the discriminator can no longer tell them apart from real ones. This innovative approach enabled computers to generate highly realistic images, opening up new possibilities in various fields.</p><p>By showcasing the potential of AI to generate realistic images and other forms of content, GANs captured the imagination of both investors and the scientific community, steering attention towards new research areas such as deep learning, generative models, and unsupervised learning. This shift in focus has accelerated the development of cutting-edge technologies in fields like computer vision, natural language processing, and autonomous systems, further fueling the growth and evolution of AI research.</p>",
         "alt": "Introduction of GANs by Ian Goodfellow",
-        "image": "public/timeline/IanGoodfellow.png",
+        "image": "public/timeline/IanGoodfellow.webp",
         "year": 2014
     },
     {
-        "title": "2015 - Variational Autoencoders (VAEs) and Latent Space Exploration",
-        "text": "VAEs provided a probabilistic approach to generating images, complementing GANs with a simpler framework for exploring latent spaces and generating new data points.",
-        "alt": "Introduction of Variational Autoencoders (VAEs)",
-        "image": "public/timeline/VAE.jpg",
+        "title": "2015 - VAEs and Latent Space Exploration",
+        "text": "<p>In 2015, <strong>Variational Autoencoders</strong> (VAEs) emerged as a powerful tool in the field of machine learning, offering a probabilistic approach to generating images. Unlike GANs, which use a competitive framework between two neural networks, VAEs employ a simpler architecture to learn the underlying patterns in data. VAEs work by encoding input data into a <strong>latent space</strong>, where variations can be explored, and then decoding it back into realistic outputs. This approach allows VAEs to generate new data points by sampling from the learned latent space, making them particularly effective for tasks involving data reconstruction and generation.</p><p>While VAEs may not produce images as sharp or realistic as GANs, their probabilistic nature provided a more straightforward framework for exploring and manipulating the latent representations of data. This made VAEs an excellent complement to GANs, particularly in applications that require a deeper understanding of data structure and the ability to smoothly interpolate between data points.</p>",
+        "image": "public/timeline/VAE.webp",
         "year": 2015
     },
     {
         "title": "2017 - Introduction of Transformer Architecture",
-        "text": "Google's 'Attention Is All You Need' paper introduced the Transformer architecture, revolutionizing natural language processing (NLP) and forming the backbone of models like GPT and BERT.",
+        "text": "<p><i>Google's</i> groundbreaking paper, ‘Attention Is All You Need,’ introduced the <strong>Transformer</strong> architecture, which has transformed the field of natural language processing (NLP). Before Transformers, most models relied on older methods that struggled to handle long sentences or complex relationships between words. The Transformer changed this by using a new concept called ‘attention,’ which allows the model to focus on the most important parts of a sentence, no matter how long it is. This made it possible to understand and generate text much more accurately and quickly.</p><p>The Transformer architecture is the foundation for many of today's most powerful language models, like <strong>GPT</strong> (Generative Pre-trained Transformer) and <strong>BERT</strong> (Bidirectional Encoder Representations from Transformers). These models are now used in a wide range of applications, from translating languages and summarizing articles to powering search engines and virtual assistants.</p>",
         "alt": "Introduction of Transformer architecture",
-        "image": "public/timeline/transformers.png",
+        "image": "public/timeline/transformers.webp",
         "year": 2017
     },
     {
         "title": "2020 - Emergence of Diffusion Models",
-        "text": "Researchers like Robin Rombach introduced diffusion models, a new approach to generative modeling that gradually transforms data distributions using a diffusion process, initially used for detailed and consistent image synthesis.",
+        "text": "<p>Researchers like <i>Robin Rombach</i> advanced generative modeling by introducing <strong>diffusion models</strong>, a novel approach that gradually transforms data distributions through a diffusion process.</p><p>Unlike traditional generative models that directly map random noise to data, diffusion models start by adding Gaussian noise to the data and then reverse this process step-by-step to reconstruct the data distribution. This unique method allows for more detailed and consistent image synthesis, as it carefully controls the transformation of the data at each step, leading to high-quality outputs.</p><p>Diffusion models excel in generating complex, high-resolution images with fine details, making them particularly effective in fields that require precision, such as scientific visualization, art, and photorealistic rendering. The introduction of diffusion models represented a significant advancement in generative modeling, offering a robust alternative to methods like GANs and VAEs by providing more stable training dynamics and the ability to generate diverse and realistic images.</p>",
         "alt": "Emergence of diffusion models in generative AI",
-        "image": "public/timeline/diffusion.png",
+        "image": "public/timeline/diffusion.webp",
         "year": 2020
     },
     {
-        "title": "2021 - CLIP and Prompt Engineering",
-        "text": "OpenAI introduced <a href='https://openai.com/index/clip/' target='_blank'>CLIP</a>, a model that understands both images and text. CLIP's ability to align images with text improved prompt understanding, enhancing models like DALL-E in generating images from textual descriptions.",
+        "title": "2021 - CLIP and Multimodality",
+        "text": "<p><i>OpenAI</i> introduced <a target='_blank' rel='noopener noreferrer' href='https://openai.com/index/clip/'><strong>CLIP</strong></a>, a groundbreaking model designed to understand both <i>images</i> and <i>text</i> in a unified framework. CLIP's unique ability to align visual and textual information has significantly enhanced the way AI models interpret and respond to prompts. By learning from a vast dataset of images paired with their corresponding textual descriptions, CLIP developed a robust understanding of the relationship between visual concepts and language. This capability has proven invaluable for improving prompt comprehension, particularly in models like <i>DALL·E</i>, which generate images based on textual inputs.</p><p>With CLIP, models can more accurately grasp the nuances of text prompts, leading to more relevant and creative image generation. For instance, when given a complex description, CLIP can discern the most important visual elements and align them with the text, allowing models like DALL-E to produce highly detailed and contextually appropriate images. The introduction of CLIP marked a significant advancement in <i>multimodal</i> AI, and paved the way for more intuitive and human-like interactions with machines.</p>",
         "alt": "Introduction of CLIP by OpenAI",
-        "image": "public/timeline/clip.png",
+        "image": "public/timeline/clip.webp",
         "year": 2021
     },
     {
-        "title": "2022 - Latent Diffusion and the road to Democratization of AI Tools",
-        "text": "Midjourney, vggan clip etc",
+        "title": "2022 - The Road to Democratization of AI Tools",
+        "text": "<p>In 2022, AI democratization advanced significantly, especially in image generation, with models like <strong>VQGAN+CLIP</strong>, <strong>Latent Diffusion</strong>, and tools such as <strong>MidJourney</strong>. In late 2021 VQGAN+CLIP laid the groundwork as an open source alternative to <i>Dall·E</i>, which just existed as a showcase to this date. This set the stage for a broader exploration of multimodal generative models.</p><p>Early in 2022, Latent Diffusion Models (LDMs) emerged as a game changer. Dall·E was opened to the public and MidJourney gained popularity for its artistic outputs, further broadening access to creative AI. The convergence of these technologies led to the widespread availability of powerful, user-friendly AI tools, effectively democratizing access to cutting-edge AI for art and creativity. These developments removed the barriers previously limited to tech companies or researchers, enabling a broader audience to explore and use AI for creative expression.</p>",
         "alt": "Release of Stable Diffusion by Stability AI",
-        "image": "public/timeline/Midjourney_Version_1.jpg",
+        "image": "public/timeline/Midjourney_Version_1.webp",
         "year": 2022
     },
     {
-        "title": "2022 - ControlNet and Enhanced Control Over Image Generation",
-        "text": "Stable Diffusion, developed by Stability AI and led by Emad Mostaque, was released as an open-source diffusion model. It democratized access to powerful AI tools, enabling widespread experimentation and innovation.",
+        "title": "2022 - Stable Diffusion and the open source community",
+        "text": "<p><strong>Stable Diffusion</strong>, developed by Stability AI under the leadership of <i>Emad Mostaque</i>, was released as an open-source diffusion model mid-2022. This groundbreaking model, built on <i>Latent Diffusion</i> techniques, made AI-powered image generation accessible to a wide audience. Its open-source nature encouraged widespread experimentation, fostering innovation among developers, artists, and hobbyists alike.</p><p>By democratizing powerful AI tools, Stable Diffusion allowed users to generate highly detailed images from text prompts, transforming creative processes and lowering the barriers to entry for those previously unable to access such technology. Its release sparked a global wave of creativity, as users worldwide explored its capabilities for both artistic and practical applications. This open access model positioned Stable Diffusion as a catalyst for the ongoing expansion of AI-driven art and design and gathered millions of enthusiasts, eager to contribute to the codebase of the Stable Diffusion.</p>",
         "alt": "Introduction of ControlNet for enhanced image generation control",
-        "image": "public/timeline/stability.png",
+        "image": "public/timeline/stability.webp",
         "year": 2022.5
     },
     {
         "title": "2023 - ControlNet and Enhanced Control Over Image Generation",
-        "text": "ControlNet, developed by researchers like Lvmin Zhang, added conditional controls to diffusion models, allowing for precise manipulation of generated images based on poses, edges, and depth maps. This marked a significant advancement in customized image generation.",
+        "text": "<p><strong>ControlNet</strong>, developed by researchers like <i>Lvmin Zhang</i>, introduced a breakthrough in image generation by adding conditional controls to diffusion models. This innovation allowed users to precisely manipulate the output of AI-generated images based on various inputs such as human poses, edges, and depth maps.</p><p>Within a couple of months thousands of use cases and applications were perceived and new kinds of conditional controls were invented. By integrating these detailed controls, ControlNet significantly enhanced customization in image generation, enabling artists and developers to guide the AI with a higher degree of precision. This advancement marked a leap forward in creating specific, structured, and context-aware imagery, expanding the possibilities for tailored AI-generated content.</p>",
         "alt": "Introduction of ControlNet for enhanced image generation control",
-        "image": "public/timeline/controlnet.png",
+        "image": "public/timeline/controlnet.webp",
         "year": 2023
     },
     {
         "title": "2023 - Rise of Fine-Tuned Models and Civitai Platform",
-        "text": "The Civitai platform emerged as a hub for fine-tuned models, allowing users to customize AI models for specific tasks. The rise of fine-tuned models, based on popular frameworks like Stable Diffusion, empowered users to tailor models for their unique needs.",
+        "text": "<p>Shortly after the release of Stable Diffusion, the technique of <strong>fine-tuning</strong> was developed. This sparked a fine-tuning craze within the open-source community. Unlike <i>DALL·E</i> and <i>MidJourney</i>, which were closed-source and limited to the aesthetics of their foundational models, fine-tuning allowed users to train models on custom styles, people or objects, diversifying the output.</p><p>A platform soon emerged as a hub for fine-tuned AI models, offering users a space to customize models for specific tasks. This platform, <strong>Civitai</strong>, enabled the sharing and distribution of fine-tuned versions, encouraging community-driven innovation and making advanced AI tools more accessible to a wider audience. Civitai quickly became a hub for various other assets supporting the growing Stable Diffusion ecosystem. Additionally, Civitai evolved into a social network, fostering learning, growth, and the exchange of ideas, contributing significantly to the expanding universe of open-source models.</p>",
         "alt": "Rise of fine-tuned models and Civitai platform",
-        "image": "public/timeline/civitai.png",
+        "image": "public/timeline/civitai.webp",
         "year": 2023.3
     },
     {
         "title": "2023 - Diffusion Models in Mainstream Applications",
-        "text": "Diffusion models became mainstream in 2023, widely adopted for various generative tasks, from text-to-image generation to video synthesis and drug discovery, solidifying their place in the AI landscape.",
+        "text": "<p>By the end of 2023, diffusion models emerged as a dominant force in AI, gaining widespread adoption for various generative tasks. Initially popularized for text-to-image generation, with models like <i>Dall·E 2</i> and <i>MidJourney</i> leading the charge, diffusion models demonstrated their versatility by expanding into fields such as video synthesis and even <a target='_blank' rel='noopener noreferrer' href='https://news.mit.edu/2023/speeding-drug-discovery-with-diffusion-generative-models-diffdock-0331'>drug discovery</a>.</p><p>Because of <i>Stable Diffusion</i> being <i>open source</i> the market for image-generation services exploded, with these technologies becoming mainstream and integrated into consumer products like smartphones and operating systems. Alongside advancements in large language models (LLMs) like <i>GPT-4</i> and its open-source counterpart <i>LLaMA</i>, users no longer needed to master prompt engineering, making access to these tools even easier.</p><p>This widespread adoption solidified diffusion models' place in the AI landscape, showcasing their adaptability and power across various industries, driving innovation in both technology and science.</p>",
         "alt": "Diffusion models in mainstream applications",
-        "image": "public/timeline/sdtools.png",
+        "image": "public/timeline/sdtools.webp",
         "year": 2023.7
     },
     {
         "title": "2024 - FLUX.1 and Further Innovations in Diffusion Models",
-        "text": "FLUX.1, developed by Black Forest Labs, introduced new techniques in diffusion models that improved computational efficiency and image quality. It represented a state-of-the-art approach in the evolving landscape of generative AI.",
+        "text": "<p><strong>FLUX.1</strong>, developed by <i>Black Forest Labs</i>, represents a major step forward in generative AI, specifically within diffusion models. Launched by surprise in mid-2024, it introduced several innovations that improved both computational efficiency and image quality. FLUX integrates a hybrid architecture combining <i>transformers</i> with <i>diffusion techniques</i>, featuring an impressive 12 billion parameters. This architecture enables it to generate high-quality images that closely follow user prompts while remaining computationally efficient, setting it apart from other models like <i>MidJourney</i> and <i>DALL·E</i>.</p><p>Additionally, it was developed as open-source, quickly gaining adoption within the community. Within a month, technological advancements made by the community for Stable Diffusion were adapted for FLUX, despite it being a novel technology. The emergence of FLUX further emphasizes the shift toward more open and customizable AI models, continuing the trend of democratizing access to advanced AI tools for the broader community.</p>",
         "alt": "Introduction of FLUX.1 by Black Forest Labs",
-        "image": "public/timeline/flux.png",
+        "image": "public/timeline/flux.webp",
         "year": 2024.5
     }
 ]
