@@ -15,11 +15,11 @@
     <div id="loading-overlay">
         <div class="spinner"></div>
     </div>
-
-    <!-- Animation 
+    
+    <!-- Animation -->
     <div id="threejs-container">
-    <script src="scripts/cover-animation.js"></script>
-    </div>-->
+        <script src="scripts/cover-animation.js"></script>
+    </div>
 
     <!-- Additional content to enable scrolling -->
     <div class="main-content">
@@ -28,28 +28,83 @@
 
         <div id="table-of-contents" class="chapter-container">
             <div id="headline1" class="headline" data-words="TABLE, OF, CONTENTS"></div>
-            <nav>
-                <ul>
-                    <li><a href="#history-of-genai">History of Generative AI</a></li>
-                    <li><a href="#how-genai-works">How Generative AI Works</a></li>
-                    <li><a href="#how-diffusion-works">How Diffusion Works</a></li>
-                    <li><a href="#token-library">Token Library</a></li>
-                    <li><a href="#controlability">Control Latent Space</a></li>
-                    <li><a href="#metacreativity">Metacreative Latent Spaces</a></li>
-                    <li><a href="#latent-experiments">Latent Experiments</a></li>
-                    <li><a href="#frequently-asked-questions">Frequently Asked Questions</a></li>
-                </ul>
-            </nav>
-        </div>
+            <div class="grid-container">
+                <div id="text-container" class="column">
+                    <nav>
+                        <ol id="toc-numbers">
+                            <li class="toc-item"><a href="#history-of-genai">History of Generative AI</a></li>
+                            <li class="toc-item"><a href="#how-genai-works">How Generative AI Works</a></li>
+                            <li class="toc-item"><a href="#how-diffusion-works">How Diffusion Works</a></li>
+                            <li class="toc-item"><a href="#token-library">Token Library</a></li>
+                            <li class="toc-item"><a href="#controlability">Control Latent Space</a></li>
+                            <li class="toc-item"><a href="#metacreativity">Metacreative Latent Spaces</a></li>
+                            <li class="toc-item"><a href="#latent-experiments">Latent Experiments</a></li>
+                            <li class="toc-item"><a href="#list-of-links">List of Useful Links</a></li>
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function() {
+                                    const toc = document.getElementById('toc-numbers');
+                                    const tocItems = document.querySelectorAll('#toc-numbers li');
+                                    const tocSection = document.getElementById('table-of-contents');
+
+                                    // IntersectionObserver to make TOC items visible
+                                    function handleTOCIntersection(entries, observer) {
+                                        entries.forEach(entry => {
+                                            if (entry.isIntersecting) {
+                                                tocItems.forEach((item) => {
+                                                    item.classList.add('visible'); // Add visible class to trigger the animation
+                                                });
+                                            }
+                                        });
+                                    }
+
+                                    // Create an Intersection Observer instance for the TOC items visibility
+                                    const tocObserver = new IntersectionObserver(handleTOCIntersection, {
+                                        root: null, // Use the viewport as the container
+                                        rootMargin: '0px',
+                                        threshold: 0.5 // Adjust threshold as needed
+                                    });
+
+                                    // Observe the table of contents section
+                                    tocObserver.observe(tocSection);
+
+                                    // Scroll-based detection to apply drift when TOC section is out of view
+                                    function checkScroll() {
+                                        const tocSectionBottom = tocSection.getBoundingClientRect().bottom;
+
+                                        if (tocSectionBottom < 1) {
+                                            toc.classList.add('sidemenu'); // Add the drift effect
+                                        } else {
+                                            toc.classList.remove('sidemenu'); // Remove the drift effect
+                                        }
+                                    }
+
+                                    // Add a scroll event listener to trigger the drift check
+                                    window.addEventListener('scroll', checkScroll);
+
+                                    // Ensure TOC items are hidden initially
+                                    tocItems.forEach((item) => {
+                                        item.classList.remove('visible');
+                                    });
+                                });
+
+                            </script>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="image-container column">   
+                    <img id="toc-image" src="public/experiments/overlay.webp" class="image-right" style="width: 55vh;" loading="lazy">
+                </div>   
+            </div>
+        </div>  
         
         <!-- History -->
 
         <div id="history-of-genai" class="chapter-container">
             <div id="headline2" class="headline" data-words="HISTORY, OF, GENERATIVE AI"></div>
             <div class="grid-container">
-                <div id="image-container" class="column" style="justify-content: center;">
-                    <div class="animated-image-container">
-                        <img id="timeline-animation" src="" alt="Animated Timeline" class="animated-image" loading="lazy">
+                <div id="history-image-container" class="column" style="justify-content: center;">
+                    <div class="image-container">
+                        <img id="timeline-animation" src="" alt="Animated Timeline" class="image-left" loading="lazy">
                     </div>
                 </div>
                 <div id="text-container" class="column" style="align-items: flex-start;">
@@ -63,8 +118,7 @@
                         </div>  
                     </div>
                 </div>
-            </div> 
-            <a href="#table-of-contents">Back to the table of contents</a>       
+            </div>       
         </div>
 
         <!-- How genAI (Image) works  -->
@@ -79,9 +133,9 @@
                     <h1 id="how-genai-works-chapter-title">Chapter Title</h1>
                     <div id="how-genai-works-chapter-text" class="readable-text">This is the text for the current chapter.</div>
                 </div>
-                <div id="image-container" class="column">
-                    <div class="animated-image-container">   
-                        <img id="how-genai-works-animation" src="" alt="Animated Image" class="animated-image" loading="lazy">
+                <div id="hgw-image-container" class="column">
+                    <div class="image-container">   
+                        <img id="how-genai-works-animation" src="" alt="Animated Image" class="image-right" loading="lazy">
                     </div>
                     <div id="genai-image-container" style="cursor: crosshair;">
                         <script src="scripts/latentspace-animation.js"></script>
@@ -95,15 +149,15 @@
         <div id="how-diffusion-works" class="chapter-container">
             <div id="headline3" class="headline" data-words="HOW, DIFFUSION, WORKS"></div>
             <div class="grid-container">
-                <div id="image-container" class="column">
+                <div id="hdw-image-container" class="column">
                     <video id="how-diffusion-works-animation" width="500" preload="auto" style="display: block; border-radius: 8px;" loading="lazy">
                         <source src="" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                     <div id="slider">
-                        <input type="range" min="0" max="4" class="hdw-slider">
+                        <input id="how-diffusion-works-slider" type="range" min="0" max="4" class="slider">
                         <div class="display">
-                            <span class="hdw-slider-value">Value</span>
+                            <span id="how-diffusion-works-slider-value" class="slider-value">Value</span>
                         </div>
                     </div>                
                 </div>
@@ -130,7 +184,7 @@
                     </div>
                     <div class="row-2">
                         <div id="searchfield">
-                            <input type="text" id="searchInput" placeholder="Search by token...">
+                            <input type="text" id="searchInput" class="searchInput" placeholder="Search by token...">
                             <p style="text-align: center;">or <strong>concept:</strong></p>
                             <div class="page-index">
                                 <span class="page-number" data-file="benjaminbertram_com/countries_filenames.txt" id="countriesButton">Countries</span>
@@ -151,19 +205,21 @@
             </div> 
         </div>
 
-        <!-- Controlability -->
+        <!-- Control Latent Space -->
 
-        <div id="table-of-contents" class="chapter-container">
+        <div id="controlability" class="chapter-container">
             <div id="headline3" class="headline" data-words="CONTROL, LATENT, SPACE"></div>
             <div class="grid-container">
-                <div id="text-container" class="column">
-                    <video id="controlability-animation" width="600" preload="auto" style="display: block;" loading="lazy">
+                <div id="controlability-image-container" class="column">
+                    <video id="controlability-animation" width="500" preload="auto" style="display: block; border-radius: 8px;" loading="lazy">
                         <source src="" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                     <div id="slider">
-                        <input type="range" min="0" max="4" class="controlability-slider">
-                        <span class="controlability-slider-value">Value</span>
+                        <input id="controlability-slider" type="range" min="0" max="4" class="slider">
+                        <div class="display">
+                            <span id="controlability-slider-value" class="slider-value">Value</span>
+                        </div>
                     </div>                
                 </div>
                 <div id="text-container" class="column">
@@ -183,30 +239,16 @@
             <div class="grid-container">
                 <div id="text-container" class="column">
                     <div id="chapter-text" class="readable-text">
-                        A token library is an innovative tool designed to search and display tokens from CLIP (Contrastive Language-Image Pre-training) for image generators. CLIP, developed by OpenAI, is a neural network trained on a vast dataset of image-text pairs. It has demonstrated remarkable abilities in understanding the relationship between textual descriptions and visual content.
-                        <p>The token library acts as an intermediary, allowing users to efficiently harness the power of CLIP within their image generation workflows. By providing a searchable interface for CLIP's extensive vocabulary, it enables creators to find the most appropriate and effective tokens for their desired visual outputs.</p>
-                        <h2>The Mechanics of Token Libraries</h2>
-                        <p>At its core, a token library operates on a simple yet powerful principle:</p>
-                        <ol>
-                        <li><b>Input</b>: Users enter a textual description or concept.</li>
-                        <li><b>Token Extraction</b>: The library processes this input through CLIP's tokenizer.</li>
-                        <li><b>Semantic Search</b>: It then performs a semantic search across its database of pre-computed token embeddings.</li>
-                        <li><b>Result Display</b>: The most relevant tokens are presented to the user, often accompanied by sample images or usage statistics.</li>
-                        </ol>
+                        <p>Eduardo Navas' concept of <strong>meta-creativity</strong> describes creativity that transcends human boundaries by incorporating non-human systems such as artificial intelligence (AI) into creative processes. According to Navas, this machine participation expands the potential of creativity and challenges traditional concepts of authorship and artistic genius. It is not necessarily about real creativity, but about the appearance of creativity that machines can generate. This merging of human and machine creativity raises new questions, such as how machine-produced artworks are valued and interpreted. The sale of an AI-generated portrait for $432,000 at auction in 2018 is one example of how machine-generated works have triggered cultural discussions about recognition and responsibility.</p>
+                        <p>Creativity has historically been considered a deeply human ability that involves emotion, intuition, and cultural sensitivity. Immanuel Kant laid the foundation for the modern understanding of artistic genius by seeing creativity as an individual expression of the self. Modernity emphasized originality and a departure from tradition, while postmodernism challenged this view through fragmentation and irony, introducing the concept of the “bricoleur” (someone who constructs new meanings from existing elements). In <strong>metamodernism</strong>, a framework that unites modernism and postmodernism, creativity is understood as a balancing act between irony and the search for meaning. This also opens up the discourse to machine creativity, with the boundaries between humans and machines becoming increasingly blurred.</p>
                     </div>               
                 </div>
                 <div id="text-container" class="column">
                     <div id="chapter-text" class="readable-text">
-                        A token library is an innovative tool designed to search and display tokens from CLIP (Contrastive Language-Image Pre-training) for image generators. CLIP, developed by OpenAI, is a neural network trained on a vast dataset of image-text pairs. It has demonstrated remarkable abilities in understanding the relationship between textual descriptions and visual content.
-                        <p>The token library acts as an intermediary, allowing users to efficiently harness the power of CLIP within their image generation workflows. By providing a searchable interface for CLIP's extensive vocabulary, it enables creators to find the most appropriate and effective tokens for their desired visual outputs.</p>
-                        <h2>The Mechanics of Token Libraries</h2>
-                        <p>At its core, a token library operates on a simple yet powerful principle:</p>
-                        <ol>
-                        <li><b>Input</b>: Users enter a textual description or concept.</li>
-                        <li><b>Token Extraction</b>: The library processes this input through CLIP's tokenizer.</li>
-                        <li><b>Semantic Search</b>: It then performs a semantic search across its database of pre-computed token embeddings.</li>
-                        <li><b>Result Display</b>: The most relevant tokens are presented to the user, often accompanied by sample images or usage statistics.</li>
-                        </ol>
+                        <p>The integration of AI into creative processes leads to <strong>co-creativity</strong> between humans and machines. The human often functions as a curator, selecting and refining machine-generated results, rather than creating directly. This shift reflects a larger transformation in creative practice, which is no longer just about producing new works, but also about selecting and contextualizing machine-generated content.</p>
+                        <p>While critics such as Margaret Boden argue that machines lack true creativity because they have no emotions or intentions, there are also voices that reject such an anthropocentric view. They encourage us not to consider creativity as an exclusive human privilege, but to also attribute it to non-human actors. This means that creativity can be understood as a flexible, variable system in which machines can reveal creative possibilities by manipulating data in “<strong>Latent Space</strong>”.</p>
+                        <p>In summary, the use of AI in art presents both technical and philosophical challenges. It is not only a question of how creative machines can be, but also how the human contribution is redefined by the curation and contextualization of machine works. AI generates “readymades” in real time and enables parallel creative processes that transcend traditional linear methods. This leads to a new aesthetic that is strongly influenced by the underlying training data and cultural contexts, establishing machine creativity as part of a broader social dialogue.</p>
+                        </ul>
                     </div>
                 </div>
             </div> 
@@ -216,15 +258,17 @@
 
         <div id="latent-experiments" class="chapter-container">
             <div id="headline3" class="headline" data-words="LATENT, EXPERIMENTS"></div>
-            
             <div class="grid-container">
-                <div id="image-container" class="column">
-                    <div id="experiment-image">
-                        <img id="1234" src="" alt="Image by Benjamin Bertram generated with AI" width=60% loading="lazy">
+                <div id="experiment-image-container" class="column">
+                    <div class="image-container">
+                        <img id="experiment-image" src="" preload="auto" class="image-left-experiment" loading="lazy">
                     </div>
-                    <div id="navigation-buttons">
-                        <span id="previous" class="experiment-button">Previous Variation</span>
-                        <span id="next" class="experiment-button">Next Variation</span>
+                    <div class="row-2">
+                        <div id="navigation-buttons" style="margin-top: 10px;">
+                            <span id="previous" class="experiment-button">Previous Variation</span>
+                            <span id="next" class="experiment-button">Next Variation</span>
+                        </div>
+                        <div id="gallery"></div>
                     </div>
                 </div>
                 <div id="text-container" class="column">
@@ -233,18 +277,39 @@
                         <div id="experiment-text" class="readable-text">This is the text for the current experiment.</div>
                     </div>
                     <div class="row-2-experiment">
-                        <div id="book-container" style="margin-right: -20dvw; margin-top: -10dvh;" ></div>
-                        <div id="vinyl-container" style="margin-right: -20dvw; margin-top: -10dvh;"></div>
-                        <div id="canvas-container" style="margin-top: -10dvh;"></div>
+                        <div id="mockups">
+                            <div id="book-container" style="margin-right: -20dvw; margin-top: -10dvh;" ></div>
+                            <div id="vinyl-container" style="margin-right: -20dvw; margin-top: -10dvh;"></div>
+                            <div id="canvas-container" style="margin-top: -10dvh;"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         
-        <!-- TBD -->
+        <!-- List of useful Links -->
         
-        <div id="frequently-asked-questions" class="chapter-container">
-            <div id="headline3" class="headline" data-words="FREQUENTLY,ASKED,QUESTIONS"></div>
+        <div id="list-of-links" class="chapter-container">
+            <div id="headline3" class="headline" data-words="LIST, OF, USEFUL, LINKS"></div>
+            <div class="grid-container">
+                <!-- Left Column for the first 10 search results -->
+                <div id="text-container" class="column">
+                    <!-- Search field at the top -->
+                    <div id="searchfield">
+                        <input type="text" id="gsearchInput" class="searchInput">
+                        <span id="gsearchButton" class="experiment-button">Search</span>
+                    </div>
+                    <!-- Search results appear here -->
+                    <div id="gsearchResults-left" class="readable-text"></div>
+                </div>
+        
+                <!-- Right Column for the next 10 search results -->
+                <div id="text-container" class="column">
+                    <div id="gsearchResults-right" class="readable-text"></div>
+                </div>
+            </div>
+        </div>
+ <!-- 
         </div>
         <div id="text-container">
             <h1>Scroll Below</h1>
@@ -258,11 +323,10 @@ rakshit
             <p>Adding more content to make sure the page scrolls properly.</p>
         </div>
     </div>
-
+-->
 
     <!-- necessary scripts -->
     <script src="scripts/lerping-headline.js"></script>
-
     <script src="scripts/timeline.js"></script>
 
     <script src="scripts/howgenaiworks.js"></script>
@@ -272,6 +336,7 @@ rakshit
     <script src="scripts/search.js"></script>
    
     <script src="scripts/experiment-dataloader.js"></script>
+    <script src="scripts/gsearch.js" defer></script>
     <script>
         function loadScript(url, containerId) {
             const script = document.createElement('script');

@@ -4,11 +4,12 @@ fetch('/public/experiments.json')
         let currentExperimentIndex = 0;
         const experiments = data.experiments;
 
-        const imgElement = document.querySelector('#experiment-image img');
+        const imgElement = document.getElementById('experiment-image');
         const textElement = document.getElementById('experiment-text');
         const titleElement = document.getElementById('experiment-title');
         const prevButton = document.getElementById('previous');
         const nextButton = document.getElementById('next');
+        const gallery = document.getElementById('gallery');
 
         window.globalImageObject = new Image();
 
@@ -55,7 +56,24 @@ fetch('/public/experiments.json')
         });
 
         updateExperiment(0);
+
+        // Dynamically load each image from the JSON file
+        experiments.forEach((experiment, index) => {
+            const img = document.createElement('img');
+            img.src = experiment.image;  // Fetching the image path from JSON
+            img.alt = experiment.title || 'Experiment Image';  // Optional: Add alt text from JSON
+            img.loading = 'lazy';  // Lazy load images for performance
+            
+            // Attach click event listener to trigger updateExperiment
+            img.addEventListener('click', () => {
+                updateExperiment(index);  // Trigger update with the clicked image index
+            });
+
+            gallery.appendChild(img);  // Append image to the gallery
+        });
+
     })
+    
     .catch(error => {
         console.error('Error loading experiments:', error);
     });

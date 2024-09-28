@@ -3,9 +3,11 @@ document.addEventListener("DOMContentLoaded", async function() {
     const videoElement = document.getElementById('controlability-animation');
     const chapterTitleElement = document.getElementById('controlability-chapter-title');
     const chapterTextElement = document.getElementById('controlability-chapter-text');
-    const sliderElement = document.querySelector('.controlability-slider');
-    const sliderValueDisplay = document.querySelector('.controlability-slider-value');
+    const sliderElement = document.getElementById('controlability-slider');
+    const sliderValueDisplay = document.getElementById('controlability-slider-value');
     const settingsContainer = document.getElementById('controlability-chapters');
+
+    let currentSliderValues = []; // Initialize variable to store slider values
 
     try {
         const response = await fetch('public/controlability.json');
@@ -32,51 +34,56 @@ document.addEventListener("DOMContentLoaded", async function() {
 
     function loadChapterContent(data, chapterIndex) {
         const chapter = data[chapterIndex];
-
-        // Update text content
         chapterTitleElement.textContent = chapter.title;
         chapterTextElement.innerHTML = chapter.text;
 
-        // Update video source and reload only if necessary
+        // Update video source and reload only if different to avoid unnecessary reloads
         const videoSource = videoElement.querySelector('source');
         if (videoSource.src !== chapter.video) {
             videoSource.src = chapter.video;
             videoElement.load();
+
+            // Once the video is loaded, set the initial frame based on initialIndex
+            videoElement.onloadeddata = function() {
+                const initialIndex = 0; // Initialize to the first index
+                updateVideoFrame(videoElement, initialIndex);
+            };
         }
 
-        // Update slider values dynamically
-        buildSlider(chapter.slidervalue);
+        // Update slider values dynamically without rebuilding it
+        updateSlider(chapter.slidervalue, 0); // Pass 0 as initial index
     }
 
-    function buildSlider(sliderValues) {
+    function updateSlider(sliderValues, initialIndex) {
+        // Store the current slider values for later use
+        currentSliderValues = sliderValues;
+
+        // Set up the slider range based on the length of the sliderValues array
         sliderElement.min = 0;
         sliderElement.max = sliderValues.length - 1;
-        sliderElement.value = 0;
+        sliderElement.step = 1;
 
-        sliderValueDisplay.textContent = sliderValues[0];
+        // Set the initial value of the slider to the first index
+        sliderElement.value = initialIndex;
 
-        // Debounce slider input handling to avoid excessive updates
-        const debouncedSliderInput = debounce(() => {
-            const currentIndex = sliderElement.value;
-            const currentValue = sliderValues[currentIndex];
-
-            sliderValueDisplay.textContent = currentValue;
-            updateVideoFrame(videoElement, currentValue);
-        }, 100);
-
-        sliderElement.removeEventListener('input', debouncedSliderInput); // Prevent multiple listeners
-        sliderElement.addEventListener('input', debouncedSliderInput);
+        // Display the current slider value
+        sliderValueDisplay.textContent = sliderValues[initialIndex];
     }
 
-    function updateVideoFrame(video, frameNumber) {
-        video.currentTime = frameNumber;
-    }
+    // Event listener that will handle slider input and update the video
+    sliderElement.addEventListener('input', () => {
+        const currentIndex = parseInt(sliderElement.value, 10); // Convert slider value to an integer index
+        const currentValue = currentSliderValues[currentIndex]; // Get the value at the current index
 
-    function debounce(func, delay) {
-        let timeout;
-        return function(...args) {
-            clearTimeout(timeout);
-            timeout = setTimeout(() => func.apply(this, args), delay);
-        };
+        // Update the displayed slider value
+        sliderValueDisplay.textContent = currentValue;
+
+        // Update the video frame based on the index
+        updateVideoFrame(videoElement, currentIndex);
+    });
+
+    function updateVideoFrame(video, frameIndex) {
+        // Assuming 29.97 FPS, update the video to the correct time
+        video.currentTime = frameIndex / 29.97;
     }
 });

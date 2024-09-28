@@ -3,8 +3,8 @@ document.addEventListener("DOMContentLoaded", async function() {
     const videoElement = document.getElementById('how-diffusion-works-animation');
     const chapterTitleElement = document.getElementById('how-diffusion-works-chapter-title');
     const chapterTextElement = document.getElementById('how-diffusion-works-chapter-text');
-    const sliderElement = document.querySelector('.hdw-slider');
-    const sliderValueDisplay = document.querySelector('.hdw-slider-value');
+    const sliderElement = document.getElementById('how-diffusion-works-slider');
+    const sliderValueDisplay = document.getElementById('how-diffusion-works-slider-value');
     const settingsContainer = document.getElementById('how-diffusion-works-chapters');
 
     let currentSliderValues = []; // Store the current slider values

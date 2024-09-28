@@ -17,8 +17,8 @@
       },
       {
         "image": "public/experiments/image4.webp",
-        "title": "1950s - Early Computer Graphics",
-        "text": "<p>This <b>experiment</b> was about the steps of an generation. Instead of <i>20 steps</i> I used <u>1 steps</u>. I really like the blurry aesthetic, which comes of as an error in the first place but on second thoughts it looks really interesting in terms of aesthetic. See it on an canvas and it totally looks like an <b>modernistic painting</b>, doesn't it?<br><br>Great for walls in some doctors area.</p><p>This <b>experiment</b> was about the steps of an generation. Instead of <i>20 steps</i> I used <u>1 steps</u>. I really like the blurry aesthetic, which comes of as an error in the first place but on second thoughts it looks really interesting in terms of aesthetic. See it on an canvas and it totally looks like an <b>modernistic painting</b>, doesn't it?<br><br>Great for walls in some doctors area.</p><p>This <b>experiment</b> was about the steps of an generation. Instead of <i>20 steps</i> I used <u>1 steps</u>. I really like the blurry aesthetic, which comes of as an error in the first place but on second thoughts it looks really interesting in terms of aesthetic. See it on an canvas and it totally looks like an <b>modernistic painting</b>, doesn't it?<br><br>Great for walls in some doctors area.</p>"
+        "title": "Experiments with steps",
+        "text": "<p>This <b>experiment</b> was about the steps of a generation. Instead of <i>20 steps</i>, which converges to a detailed image, I used just <u>3 steps</u>. The blurry aesthetic, which results from the broader layers getting the attention first, looks really interesting in terms of aesthetic. See it on a canvas and it totally looks like an <b>impressionistic painting.</b>Diffusing the first steps also has a saturated look which makes it look even more like a painting with bold, primary colors.</p>"
       },
       {
         "image": "public/experiments/image5.webp",
@@ -51,7 +51,7 @@
         "text": "<p>This <b>experiment</b> was about the steps of an generation. Instead of <i>20 steps</i> I used <u>1 steps</u>. I really like the blurry aesthetic, which comes of as an error in the first place but on second thoughts it looks really interesting in terms of aesthetic. See it on an canvas and it totally looks like an <b>modernistic painting</b>, doesn't it?<br><br>Great for walls in some doctors area.</p><p>This <b>experiment</b> was about the steps of an generation. Instead of <i>20 steps</i> I used <u>1 steps</u>. I really like the blurry aesthetic, which comes of as an error in the first place but on second thoughts it looks really interesting in terms of aesthetic. See it on an canvas and it totally looks like an <b>modernistic painting</b>, doesn't it?<br><br>Great for walls in some doctors area.</p><p>This <b>experiment</b> was about the steps of an generation. Instead of <i>20 steps</i> I used <u>1 steps</u>. I really like the blurry aesthetic, which comes of as an error in the first place but on second thoughts it looks really interesting in terms of aesthetic. See it on an canvas and it totally looks like an <b>modernistic painting</b>, doesn't it?<br><br>Great for walls in some doctors area.</p>"
       },
       {
-        "image": "public/experiments/imag11.webp",
+        "image": "public/experiments/image11.webp",
         "title": "1950s - Early Computer Graphics",
         "text": "<p><u>Underlined text</u> adds another layer of formatting.<br><br>Double line break.</p>"
       }

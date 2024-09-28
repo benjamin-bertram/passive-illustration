@@ -158,6 +158,13 @@ init();
 
 // p5.js sketch
 const s = (p) => {
+    let centerX, centerY; // Center position for circular movement
+    let bounceDuration = 1500;  // Duration for one full bounce cycle in ms
+    let amplitude = 0.2;    // Initial amplitude for the bouncing effect (height of the bounce)
+    let startTime; 
+    let isBouncing = true; // State variable to control bounce vs pause
+    let pauseDuration = 2000;  // Pause duration between bounces
+    let pauseStartTime; 
 
     p.setup = () => {
         let canvas = p.createCanvas(window.innerWidth, window.innerHeight);
@@ -168,6 +175,16 @@ const s = (p) => {
         p.fill('black');
         p.textSize(120);
         p.textAlign(p.CENTER, p.CENTER);
+
+        centerX = p.width / 2;  // Center X position for the text
+        centerY = p.height - 50; // Base Y position for the text
+        startTime = p.millis();  // Capture the start time
+    };
+
+
+    // Easing function (ease in-out cubic)
+    p.easeInOutCubic = (t) => {
+        return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
     };
 
     p.draw = () => {
@@ -178,20 +195,81 @@ const s = (p) => {
         let blurValuePassive = p.map(p.mouseY, 0, p.height, 0, 20);
         let blurValueIllustration = p.map(p.mouseY, 0, p.height, 20, 0);
 
-    // Draw "passive" with the blur effect
-    p.push();
-    p.drawingContext.filter = `blur(${blurValuePassive}px)`;
-    p.fill(0);
-    p.text("PASSIVE", p.width / 2, p.height / 2 - 30);
-    p.pop();
+        // Draw "passive" with the blur effect
+        p.push();
+        p.drawingContext.filter = `blur(${blurValuePassive}px)`;
+        p.fill(0);
+        p.text("PASSIVE", p.width / 2, p.height / 2 - 30);
+        p.pop();
 
-    // Draw "illustration" with the opposite blur effect
-    p.push();
-    p.drawingContext.filter = `blur(${blurValueIllustration}px)`;
-    p.fill(0);
-    p.text("ILLUSTRATION", p.width / 2, p.height / 2 + 40);
-    p.pop();
+        // Draw "illustration" with the opposite blur effect
+        p.push();
+        p.drawingContext.filter = `blur(${blurValueIllustration}px)`;
+        p.fill(0);
+        p.text("ILLUSTRATION", p.width / 2, p.height / 2 + 40);
+        p.pop();
+        
 
+        if (isBouncing) {
+            // Calculate elapsed time since the start of the bounce
+            let elapsedTime = p.millis() - startTime;
+            let t = elapsedTime / bounceDuration; // Time factor normalized to [0, 1]
+            
+            if (t > 1) t = 1; // Ensure it stays within the bounce duration
+            
+            // Apply easing to the time factor (ease out effect)
+            let easedT = p.easeInOutCubic(t);
+
+            // Use the eased time to calculate the phase of the sine wave
+            let phase = easedT * p.TWO_PI * -3; // Map to [0, 2PI] for one full sine wave
+            let bounce = amplitude * p.sin(phase); // Damped sine wave for the bounce effect
+
+        p.push();
+        p.translate(centerX, centerY);  // Apply bouncing movement to the Y position
+        p.rotate(bounce); // Apply rotation around the center
+        p.fill('#fe8149');
+        p.textSize(50);
+        p.text("START", 0, 0);  // Draw at (0, 0) since we already translated to the center
+        p.pop();
+
+        // If the bounce duration has passed, start the pause
+        if (elapsedTime > bounceDuration) {
+            isBouncing = false;  // Stop bouncing
+            pauseStartTime = p.millis();  // Capture the start of the pause
+        }
+        } else {
+        // Calculate elapsed time since the pause started
+        let pauseElapsed = p.millis() - pauseStartTime;
+
+        // If the pause duration has passed, restart the bouncing effect
+        if (pauseElapsed > pauseDuration) {
+            isBouncing = true;   // Resume bouncing
+            startTime = p.millis();  // Reset start time for the bounce
+            amplitude = 0.1;      // Reset amplitude to its initial value
+        }
+
+        // Optionally, you can draw the static "START" text during the pause
+        p.push();
+        p.translate(centerX, centerY);  // Keep text in the center during the pause
+        p.fill('#fe8149');
+        p.textSize(50);
+        p.text("START", 0, 0);  // Draw at (0, 0)
+        p.pop();
+        }
+    };
+
+    p.mousePressed = () => {
+        // Check if the click is within the "Start" text area
+        const startTextWidth = p.textWidth("Start");
+        const xMin = (p.width / 2) - (startTextWidth / 2);
+        const xMax = (p.width / 2) + (startTextWidth / 2);
+        const yMin = p.height - 50 - 30; // Considering text size and offset
+        const yMax = p.height - 50 + 30;
+
+        if (p.mouseX >= xMin && p.mouseX <= xMax && p.mouseY >= yMin && p.mouseY <= yMax) {
+            // Scroll to the div with id "table-of-contents"
+            document.getElementById("table-of-contents").scrollIntoView({ behavior: "smooth" });
+        }
     };
 };
 
