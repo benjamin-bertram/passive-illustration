@@ -1,7 +1,6 @@
 /* Colors Scheme*/
 
 :root {
-    --main-color: #3498db;
     --accent-color: #fe8149;
   }
 
@@ -245,6 +244,7 @@ a {
 
 #toc-numbers.sidemenu {
     left: 20px; /* Move the TOC slightly to the left */
+    top: 196px; /* Adjust this value to position the TOC vertically */
 }
 
 #toc-numbers.sidemenu li {
@@ -263,6 +263,7 @@ a {
     font-size: 1vw; /* Change link font size */
     opacity: 0;
     transition: opacity 0.2s ease;
+    z-index: 1;
 }
 
 #toc-numbers.sidemenu li:hover a {
@@ -282,7 +283,7 @@ a {
 }
 
 .display {
-    min-width: 165px;  /* Adjust this value based on your needs */
+    min-width: 200px;  /* Adjust this value based on your needs */
     text-align: left; /* Center the text within the fixed-width container */
 }
 
@@ -293,6 +294,7 @@ a {
     background: transparent; /* Transparent background for custom styling */
     cursor: pointer;
     width: 25rem; /* Width similar to the baseline style */
+    z-index: 5;
   }
   
   /* Removes default focus */
@@ -420,6 +422,7 @@ a {
     height: 25%; /* Ensure it takes up the full height of its parent */
     display: flex; /* Flexbox to manage its children if needed */
     align-items: center;
+    z-index: 4;
   }
 
 #gsearchResults {
@@ -478,7 +481,6 @@ a {
     grid-template-rows: repeat(4, 8dvw);
     gap: 10px;
     cursor: pointer;
-
 }
 
 .image-item {
@@ -533,11 +535,13 @@ a {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.2s;
+    z-index: 3;
 }
 
 .page-number.active, .page-number:hover, .experiment-button.active, .experiment-button:hover {
     background-color: var(--accent-color);
     color: white;
+    z-index: 2;
 }
 
 /* Animated Images Container */
@@ -550,7 +554,7 @@ a {
 .image-right{
     will-change: transform;
     width: 100%; /* Sets width to 40% of the container */
-    transform: rotate3d(1, 0, 0, -6deg) rotate3d(0, 1, 0, -6deg);
+    transform: rotate3d(1, 0, 0, 6deg) rotate3d(0, 1, 0, -6deg);
     /* animation: subtleMovement 20s ease-in-out infinite; /* Keyframe animation
     transform-style: preserve-3d; /* Preserves 3D transformations for child elements */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -559,7 +563,7 @@ a {
 .image-left{
     will-change: transform;
     width: 100%; /* Sets width to 40% of the container */
-    transform: rotate3d(1, 0, 0, -6deg) rotate3d(0, 1, 0, 6deg);
+    transform: rotate3d(1, 0, 0, 6deg) rotate3d(0, 1, 0, 6deg);
     /* animation: subtleMovement 20s ease-in-out infinite; /* Keyframe animation
     transform-style: preserve-3d; /* Preserves 3D transformations for child elements */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -616,6 +620,7 @@ a {
 #gallery::-webkit-scrollbar-thumb {
     background-color: #fe8149; /* Thumb color */
     border-radius: 5px;
+    cursor: grab;
 }
 
 #gallery::-webkit-scrollbar-track {
@@ -627,5 +632,6 @@ a {
     width: 10%; /* Or any suitable width */
     scroll-snap-align: center;
     border-radius: 8px;
+    cursor: pointer;
 }
 

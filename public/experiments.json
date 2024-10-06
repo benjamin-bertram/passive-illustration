@@ -54,6 +54,11 @@
         "image": "public/experiments/image11.webp",
         "title": "1950s - Early Computer Graphics",
         "text": "<p><u>Underlined text</u> adds another layer of formatting.<br><br>Double line break.</p>"
+      },
+      {
+        "image": "public/experiments/overlay.webp",
+        "title": "1950s - Early Computer Graphics",
+        "text": "<p><u>Underlined text</u> adds another layer of formatting.<br><br>Double line break.</p>"
       }
     ]
   }

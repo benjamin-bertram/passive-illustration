@@ -2,40 +2,34 @@
     {
         "title": "Text Prompt",
         "text": "<p>A prompt is the way to communicate with a machine—and when generating images, essentially a form of a image description. With the integration of <i>CLIP</i>, using text prompts became the most common way to control latent spaces. This practice, known as “prompt engineering”, quickly evolved into a refined craft. A typical prompt is a detailed and precise description of an image. While each embedding has a default weight of 1, the earlier it appears in the prompt, the more influence it has. Therefore, prompts often follow a general syntax like “a subject is doing something, with additional details, in a certain style.”</p><p>Different training methods have led to variations in prompt crafting, ranging from natural language descriptions to keyword-based approaches. A common technique is to use specific keywords to achieve a desired style. For instance, terms like “hires”, “8K” and “sharp focus” enhance image quality, while referencing camera models can evoke certain aesthetic qualities associated with them. However, this is not an exact science; while a text prompt can define the subject matter, it has limited control over composition and the reproducibility of finer details.</p><p> With the rise of <strong>Large Language Models</strong> (LLMs) like <i>ChatGPT</i> a common way is also to define the structure and let the LLM generate the optimal prompt.</p>",
-        "video": "public/settings/cfg.mp4",
-        "slidervalue": [1,2,3,4,5]
+        "video": "public/controlability/text2img.mp4",
+        "slidervalue": ["Syntax","Example","Result","Result2"]
 
     },
     {
         "title": "Image Prompt",
         "text": "<p>An <strong>image prompt</strong> guides an AI model to transform or generate variations based on an existing image, combining both visual input and text. Unlike text-only prompts, where descriptions solely drive creation, image prompts offer a foundation for color and composition, with the model adjusting or enhancing the image according to the text. In <i>image-to-image</i> techniques, the initial noise is replaced by the input image, and the <i>denoising strength</i> determines how much the output resembles the original.</p><p>The base image provides structure and composition, while the text prompt directs changes in style, details, or content. For instance, you could use terms like “watercolor painting” or “mixed media collage” to shift the style, or introduce a new theme that alters the image’s overall look while retaining its original composition and color elements.</p><p>Denoising strength controls the level of transformation, allowing either subtle tweaks or dramatic changes. While the base image sets the visual framework, the text prompt defines the extent and direction of the stylistic modifications, similar to text-based prompting but with a visual anchor.</p>",
-        "video": "public/settings/cfg.mp4",
-        "slidervalue": [1333,22344,3211,4222,5333]
+        "video": "public/controlability/img2img.mp4",
+        "slidervalue": ["Denoising Strength: 0.05", "Denoising Strength: 0.1", "Denoising Strength: 0.15", "Denoising Strength: 0.2", "Denoising Strength: 0.25", "Denoising Strength: 0.3", "Denoising Strength: 0.35", "Denoising Strength: 0.4", "Denoising Strength: 0.45", "Denoising Strength: 0.5", "Denoising Strength: 0.55", "Denoising Strength: 0.6", "Denoising Strength: 0.65", "Denoising Strength: 0.7", "Denoising Strength: 0.75", "Denoising Strength: 0.8", "Denoising Strength: 0.85", "Denoising Strength: 0.9", "Denoising Strength: 0.95", "Denoising Strength: 1.0"]
 
     },
     {
         "title": "Inpaiting",
         "text": "<p><strong>Inpainting</strong> involves guiding an AI model to modify or complete specific areas of an existing image, using both visual input and a text prompt. Unlike full image generation or image-to-image methods, inpainting focuses on selectively altering parts of an image while maintaining the rest unchanged. The user defines the masked area to be modified, and the AI fills or transforms it based on the given prompt.</p><p>The base image provides the overall context, such as color, composition, and style, while the text prompt directs how the masked area should be filled or adjusted. For example, you might mask out a section of a face and use a prompt like “dark sunglasses” or “colorful hat”, altering just that area while leaving the rest of the image intact.</p><p>The strength of the transformation can vary, allowing for subtle modifications or more drastic changes. While the base image serves as the foundation, inpainting lets you control how localized the changes are, with the text prompt guiding the style, content, and details of the edited area, ensuring that it blends seamlessly with the surrounding elements.</p>",
-        "video": "public/settings/cfg.mp4",
-        "slidervalue": [1,2,3,4,5]
+        "video": "public/controlability/inpainting.mp4",
+        "slidervalue": ["Denoising Strength: 0.05", "Denoising Strength: 0.1", "Denoising Strength: 0.15", "Denoising Strength: 0.2", "Denoising Strength: 0.25", "Denoising Strength: 0.3", "Denoising Strength: 0.35", "Denoising Strength: 0.4", "Denoising Strength: 0.45", "Denoising Strength: 0.5", "Denoising Strength: 0.55", "Denoising Strength: 0.6", "Denoising Strength: 0.65", "Denoising Strength: 0.7", "Denoising Strength: 0.75", "Denoising Strength: 0.8", "Denoising Strength: 0.85", "Denoising Strength: 0.9", "Denoising Strength: 0.95", "Denoising Strength: 1.0"]
 
     },
     {
         "title": "ControlNet",
         "text": "<p><strong>ControlNet</strong> is a method used in AI image generation to provide additional control over specific aspects of the output by incorporating structural information, such as pose, depth, or edge maps, into the generation process. Unlike regular image-to-image or text-based prompts, ControlNet allows the model to follow detailed guides (like hand-drawn sketches, human poses, or outlines) while generating images, ensuring more precise control over the output's composition and structure.</p><p>In ControlNet, the visual input (such as an edge map or pose diagram) acts as a blueprint, ensuring that the generated image aligns closely with this guide. The text prompt, meanwhile, adds style, content, and finer details, allowing for both creative and structural adjustments. For instance, you could provide a pose skeleton and use a prompt like “a futuristic robot in a forest” to ensure the generated character follows the exact pose while adding the desired artistic elements.</p><p>This technique enables far greater control over the outcome, blending the precision of visual guides with the creativity of text prompts. ControlNet’s ability to maintain both structure and style makes it ideal for tasks where detailed composition control is crucial.</p>",
-        "video": "public/settings/cfg.mp4",
-        "slidervalue": [1,2,3,4,5]
+        "video": "public/controlability/controlnet.mp4",
+        "slidervalue": ["Without ControlNet", "Canny","Depth","Lineart","MLSD","NomalMap","OpenPose","Recolor","Reference","Scribble","Segmentation","Shuffle","Softedge","IP-Adapter"]
     },
     {
         "title": "Finetuning",
-        "text": "<p><strong>Fine-tuning</strong>, particularly using <i>LoRA</i> (Low-Rank Adaptation), is a technique that allows an AI model to adapt to specific styles or tasks without retraining the entire model from scratch. Instead, LoRA modifies just a small subset of parameters, making it a more efficient and lightweight approach to customizing a model's behavior.</p>p>LoRA focuses on fine-tuning the latent representations, enabling the model to learn new styles, content, or characteristics from a smaller dataset. For example, you can fine-tune a model to generate art in a specific artist’s style or capture unique visual features of a particular subject. By altering only a small number of model weights, LoRA allows this adaptation while preserving the original model’s general capabilities.</p><p>This approach is particularly useful for tasks where computational resources are limited or when rapid adjustments are needed. With LoRA, you can switch between different fine-tuned “personalities” of the model by loading lightweight adapters, enabling efficient style transfers or targeted outputs while keeping the core model intact.</p>",
-        "video": "public/settings/cfg.mp4",
-        "slidervalue": ["Euler","Euler A","DDIM","PLMS","LCM"]
-    },
-    {
-        "title": "Targeting UNET",
-        "text": "The 1990s saw the rise of digital media and generative art. Artists began using algorithms to create digital artwork, with fractal algorithms generating complex, self-similar patterns.",
-        "video": "public/settings/cfg.mp4",
-        "slidervalue": [0.1,0.3,0.5,0.7,0.9]
+        "text": "<p><strong>Fine-tuning</strong>, particularly using <i>LoRA</i> (Low-Rank Adaptation), is a technique that allows an AI model to adapt to specific styles or tasks without retraining the entire model from scratch. Instead, LoRA modifies just a small subset of parameters, making it a more efficient and lightweight approach to customizing a model's behavior.</p><p>LoRA focuses on fine-tuning the latent representations, enabling the model to learn new styles, content, or characteristics from a smaller dataset. For example, you can fine-tune a model to generate art in a specific artist’s style or capture unique visual features of a particular subject. By altering only a small number of model weights, LoRA allows this adaptation while preserving the original model’s general capabilities.</p><p>This approach is particularly useful for tasks where computational resources are limited or when rapid adjustments are needed. With LoRA, you can switch between different fine-tuned “personalities” of the model by loading lightweight adapters, enabling efficient style transfers or targeted outputs while keeping the core model intact.</p>",
+        "video": "public/controlability/finetuning.mp4",
+        "slidervalue": ["Untuned","Dataset","Finetuned","Comparison"]
     }
 ]
