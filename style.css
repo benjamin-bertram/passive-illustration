@@ -476,7 +476,7 @@ a {
 
 #searchResults {
     display: grid;
-    padding-inline: 130px;
+    padding-inline: 20px;
     grid-template-columns: repeat(4, 8dvw);
     grid-template-rows: repeat(4, 8dvw);
     gap: 10px;
@@ -606,8 +606,8 @@ a {
     display: flex;
     overflow-x: scroll;
     scroll-snap-type: x mandatory;
-    gap: 10px;
-    width: 80%; /* Same width as .column or .row-2 */
+    gap: 8px;
+    width: 90%; /* Same width as .column or .row-2 */
     padding-top: 40px; /* Adds space between images and scrollbar */
     padding-bottom: 10px; /* Adds space between images and scrollbar */
 }

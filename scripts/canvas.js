@@ -86,7 +86,7 @@ function canvasSketch(p) {
         p.push();
         p.texture(canvasImage);
         p.box(w, h, 1);
-        p.texture(alphaImage);
+        p.texture(maskedOverlay);
         p.box(w, h, 1);
         p.pop();
 
