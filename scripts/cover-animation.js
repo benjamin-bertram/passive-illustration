@@ -49,7 +49,7 @@ function init() {
 
 function createTile(x, y, z, textureUrl) {
 
-    // Safe Zone Definition (example: circular)
+/*     // Safe Zone Definition (example: circular)
     const safeZoneRadius = 2;  
     const centerX = 0;
     const centerY = 0;
@@ -63,7 +63,7 @@ function createTile(x, y, z, textureUrl) {
         if (distanceFromCenter >= safeZoneRadius) { 
             break; // Position is outside the safe zone
         }
-    }
+    } */
 
     textureLoader.load(textureUrl, (texture) => {
 
@@ -230,6 +230,13 @@ const s = (p) => {
         p.fill('#fe8149');
         p.textSize(50);
         p.text("START", 0, 0);  // Draw at (0, 0) since we already translated to the center
+        p.pop();
+
+        p.push();
+        p.translate(centerX, centerY-40);  // Apply bouncing movement to the Y position
+        p.fill('#fe8149');
+        p.textSize(20);
+        p.text("Optimized for Desktop", 0, 0);  // Draw at (0, 0) since we already translated to the center
         p.pop();
 
         // If the bounce duration has passed, start the pause
