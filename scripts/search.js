@@ -134,7 +134,7 @@ document.addEventListener("DOMContentLoaded", async function() {
     }
 
     function updateResultCount() {
-        resultCount.innerText = `Found ${filteredImageData.length} match${filteredImageData.length !== 1 ? 'es' : ''}`;
+        resultCount.innerText = `Found ${filteredImageData.length/4} match${filteredImageData.length !== 1 ? 'es' : ''}`;
     }
 
     // Add event listeners to filter buttons
