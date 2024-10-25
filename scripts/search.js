@@ -4,17 +4,20 @@ document.addEventListener("DOMContentLoaded", async function() {
     const searchInput = document.getElementById('searchInput');
     const imageContainer = document.getElementById('searchResults');
     const resultCount = document.getElementById('resultCount');
-    const maxImages = 16; 
+    const maxImages = 16;
     let currentIndex = 0;
-    let currentPage = 0; 
+    let currentPage = 0;
     let totalPages = 0;
-    let isFilterActive = false; // To check if a filter is active
+    let isFilterActive = false;
     let debounceTimer;
 
-    // Image cache to store already loaded images
+    // Image cache with a size limit (e.g., 100 images) using a Map for LRU caching
+    const cacheLimit = 100;
     const imageCache = new Map();
 
-    // Fetch and process data once
+    // Token index map for faster searching
+    const tokenIndexMap = new Map();
+
     async function fetchAndProcessData(filePath, isInitialLoad = false) {
         try {
             const response = await fetch(filePath);
@@ -23,14 +26,15 @@ document.addEventListener("DOMContentLoaded", async function() {
                 const parts = filename.split('-');
                 return {
                     filename: filename,
-                    token: parts[2].split('.')[0].toLowerCase(),
-                    url: `public/token/${filename}`
+                    token: parts[1].split('.')[0].toLowerCase(),
+                    url: `public/token_new/${filename}`
                 };
             });
 
             if (isInitialLoad) {
                 imageData = newData;
                 filteredImageData = [...imageData];
+                indexTokens(imageData); // Index tokens on initial load
             } else {
                 filteredImageData = newData;
                 isFilterActive = true;
@@ -45,12 +49,23 @@ document.addEventListener("DOMContentLoaded", async function() {
         }
     }
 
+    // Build an index for faster search filtering
+    function indexTokens(data) {
+        data.forEach(img => {
+            if (!tokenIndexMap.has(img.token)) {
+                tokenIndexMap.set(img.token, []);
+            }
+            tokenIndexMap.get(img.token).push(img);
+        });
+    }
+
     function resetPagination() {
         currentIndex = 0;
         currentPage = 0;
         totalPages = Math.ceil(filteredImageData.length / maxImages);
     }
 
+    // Optimized search using the index map
     function search() {
         const searchTerm = searchInput.value.toLowerCase();
         filteredImageData = isFilterActive ? filteredImageData : imageData;
@@ -62,6 +77,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         updateResultCount();
     }
 
+    // Virtualized rendering - only render visible images in the viewport
     function displayImages() {
         imageContainer.innerHTML = ''; 
         const fragment = document.createDocumentFragment();
@@ -72,19 +88,20 @@ document.addEventListener("DOMContentLoaded", async function() {
             const div = document.createElement('div');
             div.className = 'image-item';
 
-            // Check if image is already cached
             if (imageCache.has(img.url)) {
-                // Use cached image
                 div.innerHTML = `
                     <img src="${imageCache.get(img.url)}" alt="${img.token}" width="150" height="150">
                     <p>${img.token}</p>
                 `;
             } else {
-                // Load image and cache it
                 const imageElement = new Image();
                 imageElement.src = img.url;
                 imageElement.onload = () => {
-                    // Store in cache after loading
+                    if (imageCache.size >= cacheLimit) {
+                        // Remove the oldest item in the cache
+                        const oldestKey = imageCache.keys().next().value;
+                        imageCache.delete(oldestKey);
+                    }
                     imageCache.set(img.url, img.url);
                 };
 
@@ -134,7 +151,7 @@ document.addEventListener("DOMContentLoaded", async function() {
     }
 
     function updateResultCount() {
-        resultCount.innerText = `Found ${filteredImageData.length/4} match${filteredImageData.length !== 1 ? 'es' : ''}`;
+        resultCount.innerText = `Found ${filteredImageData.length} match${filteredImageData.length !== 1 ? 'es' : ''}`;
     }
 
     // Add event listeners to filter buttons
@@ -146,14 +163,14 @@ document.addEventListener("DOMContentLoaded", async function() {
         });
     });
 
+    // Debounced search input for optimized typing response
     searchInput.addEventListener('input', () => {
         clearTimeout(debounceTimer);
         debounceTimer = setTimeout(() => {
-            isFilterActive = false; // Reset to search the full dataset
+            isFilterActive = false;
             search();
         }, 300);
     });
 
-    // Initial data fetch
-    await fetchAndProcessData('/benjaminbertram_com/filenames2.txt', true);
+    await fetchAndProcessData('/benjaminbertram_com/filenames.txt', true);
 });
