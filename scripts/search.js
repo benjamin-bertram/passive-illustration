@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", async function() {
                 return {
                     filename: filename,
                     token: parts[1].split('.')[0].toLowerCase(),
-                    url: `public/token_new/${filename}`
+                    url: `public/token/${filename}`
                 };
             });
 
