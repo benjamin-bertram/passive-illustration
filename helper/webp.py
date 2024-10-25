@@ -24,7 +24,7 @@ def convert_images_to_webp(input_folder, output_folder):
 
 # Define the input and output folders
 input_folder = "/Users/benjaminbertram/Dropbox/_MASTER/_6-7-8_Master_SS23-WS23-SS24/passive-illustration/public/experiments"
-output_folder = "helper/public"
+output_folder = "public"
 
 # Convert images
 convert_images_to_webp(input_folder, output_folder)
