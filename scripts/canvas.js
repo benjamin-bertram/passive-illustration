@@ -17,7 +17,7 @@ function canvasSketch(p) {
             canvasImage.drawingContext.drawImage(globalImageObject, 0, 0);
     
             avgBrightness = calculateAverageBrightness(canvasImage);
-            setupCanvasImage();
+            p.updateOverlay();
             p.redraw(); // Redraw the canvas after updating the image
         } else {
             console.error('Image not fully loaded or invalid.');
@@ -29,13 +29,13 @@ function canvasSketch(p) {
         let canvas = p.createCanvas(300, 500, p.WEBGL);
         canvas.parent('canvas-container');
         p.noStroke();
-        
+        p.updateOverlay();
         canvasImage = p.createImage(globalImageObject.width, globalImageObject.height);
         canvasImage.drawingContext.drawImage(globalImageObject, 0, 0);
     };
 
     // Function to set up the canvas with the current image
-    function setupCanvasImage() {
+    p.updateOverlay = function() {
         let avgBrightness = calculateAverageBrightness(canvasImage);
 
         let overlayImage = p.createGraphics(canvasImage.width, canvasImage.height);
@@ -47,13 +47,10 @@ function canvasSketch(p) {
 
     function calculateAverageBrightness(img) {
         img.loadPixels();
-        let totalBrightness = 0;
-        let pixelCount = img.width * img.height;
+        let totalBrightness = 0, pixelCount = img.width * img.height;
 
         for (let i = 0; i < pixelCount; i++) {
-            let r = img.pixels[i * 4];
-            let g = img.pixels[i * 4 + 1];
-            let b = img.pixels[i * 4 + 2];
+            let r = img.pixels[i * 4], g = img.pixels[i * 4 + 1], b = img.pixels[i * 4 + 2];
             totalBrightness += (r + g + b) / 3;
         }
         return totalBrightness / pixelCount;
