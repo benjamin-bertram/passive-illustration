@@ -1,4 +1,4 @@
-fetch('/public/experiments.json')
+fetch('public/experiments.json')
     .then(response => response.json())
     .then(data => {
         let currentExperimentIndex = 0;
