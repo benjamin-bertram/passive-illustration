@@ -1,4 +1,4 @@
-const apiKey = API_KEY;
+const apiKey = 'AIzaSyAun6KhUmvA6V6j98JVHZMu2152_yx0kBw';
 const cx = '2467dc33db5af4459';
 const predefinedQuery = 'Stable Diffusion Resources'; 
 
