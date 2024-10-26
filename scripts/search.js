@@ -172,5 +172,5 @@ document.addEventListener("DOMContentLoaded", async function() {
         }, 300);
     });
 
-    await fetchAndProcessData('benjaminbertram_com/filenames.txt', true);
+    await fetchAndProcessData('passive-illustration/benjaminbertram_com/filenames.txt', true);
 });
