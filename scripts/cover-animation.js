@@ -238,7 +238,7 @@ const s = (p) => {
         p.textSize(20);
         p.text("Optimized for Desktop", 0, 0);  // Draw at (0, 0) since we already translated to the center
         p.pop();
-
+ 
         // If the bounce duration has passed, start the pause
         if (elapsedTime > bounceDuration) {
             isBouncing = false;  // Stop bouncing
