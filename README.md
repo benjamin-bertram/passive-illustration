@@ -1,6 +1,6 @@
 # Passive Illustration Website Repository
 
-The **Passive Illustration** website is a project that explores the possibilities of **latent space** as a creative medium. In my master thesis I delved into the intersection of artificial intelligence and human creativity, investigating how generative algorithms—especially such as Stable Diffusion—transform the traditional roles of artist and machine. The website provides access to interactive elements, images, and documentation generated from my experiments in latent space.
+The **Passive Illustration** website is a project that explores the possibilities of **latent space** as a creative medium. In my master thesis I delved into the intersection of artificial intelligence and human creativity, investigating how generative algorithms – especially such as Stable Diffusion – transform the traditional roles of artist and machine. The website provides access to interactive elements, images, and documentation generated from my experiments in latent space.
 
 ## Purpose of the Experiment
 
