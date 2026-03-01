@@ -1,11 +1,8 @@
 function vinylSketch(p) {
     let zoom = 1, zoomTarget = 1;
-    let albumImage, alphaImage, vinyl;
-    let w = 150, h = 150;
-    let resizedTexture, maskedOverlay;
+    let albumImage, alphaImage, vinyl, resizedTexture, maskedOverlay, w = 150, h = 150;
 
     p.preload = function() {
-        albumImage = p.loadImage(window.globalImageSrc); // Use the global variable for the initial load
         alphaImage = p.loadImage('assets/CoverVinyl.webp');
         vinyl = p.loadImage('assets/Vinyl.png');
     };
@@ -15,6 +12,7 @@ function vinylSketch(p) {
         if (globalImageObject.complete && globalImageObject.naturalHeight !== 0) {
             albumImage = p.createImage(globalImageObject.width, globalImageObject.height);
             albumImage.drawingContext.drawImage(globalImageObject, 0, 0);
+
             avgBrightness = calculateAverageBrightness(albumImage);
             p.updateOverlay();
             p.redraw(); // Redraw the canvas after updating the image
@@ -25,12 +23,10 @@ function vinylSketch(p) {
         let canvas = p.createCanvas(300, 500, p.WEBGL);
         canvas.parent('vinyl-container');
         p.noStroke();
-        
+        p.updateOverlay();
+
         albumImage = p.createImage(globalImageObject.width, globalImageObject.height);
         albumImage.drawingContext.drawImage(globalImageObject, 0, 0);
-
-        // Initialize overlay and textures
-        p.updateOverlay();
     };
 
     // Function to update overlays and textures based on the current albumImage
@@ -51,13 +47,10 @@ function vinylSketch(p) {
 
     function calculateAverageBrightness(img) {
         img.loadPixels();
-        let totalBrightness = 0;
-        let pixelCount = img.width * img.height;
+        let totalBrightness = 0, pixelCount = img.width * img.height;
 
         for (let i = 0; i < pixelCount; i++) {
-            let r = img.pixels[i * 4];
-            let g = img.pixels[i * 4 + 1];
-            let b = img.pixels[i * 4 + 2];
+            let r = img.pixels[i * 4], g = img.pixels[i * 4 + 1], b = img.pixels[i * 4 + 2];
             totalBrightness += (r + g + b) / 3;
         }
         return totalBrightness / pixelCount;

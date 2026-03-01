@@ -3,7 +3,6 @@ function bookSketch(p) {
     let coverImage, alphaImage, maskedOverlay, w = 150, h = 200;
 
     p.preload = function() {
-        // Load images initially
         alphaImage = p.loadImage('assets/CoverBuch.webp');
     };
 
@@ -12,6 +11,7 @@ function bookSketch(p) {
         if (globalImageObject.complete && globalImageObject.naturalHeight !== 0) {
             coverImage = p.createImage(globalImageObject.width, globalImageObject.height);
             coverImage.drawingContext.drawImage(globalImageObject, 0, 0);
+
             avgBrightness = calculateAverageBrightness(coverImage);
             p.updateOverlay();
             p.redraw(); // Redraw the canvas after updating the image
@@ -20,9 +20,10 @@ function bookSketch(p) {
 
     p.setup = function() {
         let canvas = p.createCanvas(300, 500, p.WEBGL);
-        canvas.parent('book-container');  // Attach the p5 canvas to the book container
+        canvas.parent('book-container');
         p.noStroke();
-        p.updateOverlay();  // Create initial overlay with the loaded image
+        p.updateOverlay();
+        
         coverImage = p.createImage(globalImageObject.width, globalImageObject.height);
         coverImage.drawingContext.drawImage(globalImageObject, 0, 0);
 
@@ -89,7 +90,9 @@ function bookSketch(p) {
             p.plane(w, h);
             p.pop();
         }
+
     };
+
 
     document.getElementById('book-container').addEventListener('click', function() {
         zoomTarget = zoomTarget === 1 ? 1.40 : 1;

@@ -1,11 +1,8 @@
 function canvasSketch(p) {
     let zoom = 1, zoomTarget = 1;
-    let canvasImage, alphaImage, person;
-    let w = 150, h = 200;
-    let maskedOverlay;
+    let canvasImage, alphaImage, maskedOverlay, person, w = 150, h = 200;
 
     p.preload = function() {
-        // Load the initial image
         alphaImage = p.loadImage('assets/CoverCanvas.webp');
         person = p.loadModel('assets/betrachter.obj', true);
     };
@@ -19,17 +16,15 @@ function canvasSketch(p) {
             avgBrightness = calculateAverageBrightness(canvasImage);
             p.updateOverlay();
             p.redraw(); // Redraw the canvas after updating the image
-        } else {
-            console.error('Image not fully loaded or invalid.');
-        }
+        };
     };
     
-    // Instead of using p.preload, initialize the p5 sketch in setup with a default image or wait for the first update
     p.setup = function() {
         let canvas = p.createCanvas(300, 500, p.WEBGL);
         canvas.parent('canvas-container');
         p.noStroke();
         p.updateOverlay();
+        
         canvasImage = p.createImage(globalImageObject.width, globalImageObject.height);
         canvasImage.drawingContext.drawImage(globalImageObject, 0, 0);
     };
